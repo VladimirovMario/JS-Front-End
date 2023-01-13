@@ -1,0 +1,24 @@
+body {
+  width: 480px;
+  background-color: #f9f7cf;
+}
+
+header,
+footer {
+  background-color: #f2dcbb;
+}
+
+header h1,
+h2,
+footer p {
+  margin: 0;
+  padding: 15px 5px 15px;
+}
+
+/*
+    padding: 15px, 5px 15px;
+    top padding is 15px
+    right and left paddings are 5px
+    bottom padding is 15px
+
+*/
