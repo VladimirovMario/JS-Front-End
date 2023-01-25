@@ -4,6 +4,10 @@ html {
   line-height: 1.5;
 }
 
+body {
+  padding: 60px;
+}
+
 header {
   border-bottom: 2px solid;
 }
