@@ -1,0 +1,35 @@
+body {
+  background-color: #c7bfbc;
+}
+
+.header {
+  background-color: #234465;
+  padding: 8px 32px;
+  height: calc(32px + (8px * 2));
+}
+
+.links__item a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header__logo {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.header__links {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 80px;
+  font-size: 0px;
+}
+
+.links__item {
+  display: inline-block;
+  font-size: 16px;
+}
+
+.links__item:not(:last-child) {
+  margin-right: 8px;
+}
