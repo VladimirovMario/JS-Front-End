@@ -1,0 +1,62 @@
+@import url("https://use.fontawesome.com/releases/v6.2.1/css/all.css");
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.viewport:nth-child(1) {
+  background-image: linear-gradient(
+    to right,
+    #1c649d,
+    #0080b0,
+    #009ab6,
+    #00b3b0,
+    #41c9a2
+  );
+}
+
+.viewport:nth-child(2) {
+  background-image: linear-gradient(
+    to right,
+    #aa3673,
+    #c33c61,
+    #d34d4a,
+    #d76532,
+    #d18016
+  );
+}
+
+.viewport {
+  position: relative;
+  height: 500px;
+}
+
+.card {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+i {
+  font-size: 20px;
+  position: absolute;
+  bottom: 7%;
+  right: 4%;
+  color: #fff;
+}
+
+.fa-star {
+  bottom: 3%;
+  right: 4%;
+}
