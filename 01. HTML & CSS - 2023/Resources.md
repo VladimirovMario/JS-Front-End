@@ -39,3 +39,11 @@
 - [Tester `:nth`](https://css-tricks.com/examples/nth-child-tester/)
 - [Using CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
 - [CSS Attribute Selectors](https://www.w3schools.com/css/css_attribute_selectors.asp)
+
+## 05 Position & Grid
+
+- [Introduction to CSS layout](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Introduction#summary)
+- [Learn Grid by Playing CSS Game](https://codingfantasy.com/games/css-grid-attack)
+- [Grid Garden](https://cssgridgarden.com/)
+- [CSS Position Sticky - How It Really Works!](https://elad.medium.com/css-position-sticky-how-it-really-works-54cd01dc2d46)
+- [Welcome to CSSBattle!](https://cssbattle.dev/)
