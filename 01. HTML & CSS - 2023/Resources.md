@@ -47,3 +47,10 @@
 - [Grid Garden](https://cssgridgarden.com/)
 - [CSS Position Sticky - How It Really Works!](https://elad.medium.com/css-position-sticky-how-it-really-works-54cd01dc2d46)
 - [Welcome to CSSBattle!](https://cssbattle.dev/)
+
+## 06 Flexbox
+
+- [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [Game: Flexbox Froggy](https://flexboxfroggy.com/)
+- [Game: Flex Box Adventure](https://codingfantasy.com/games/flexboxadventure)
+- [Safia SaaS Template](https://www.figma.com/community/file/892582971189995704)
