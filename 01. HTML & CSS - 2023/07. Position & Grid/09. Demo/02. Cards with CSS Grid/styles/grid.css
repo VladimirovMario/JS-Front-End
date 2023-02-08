@@ -1,0 +1,9 @@
+.cards {
+  display: grid;
+  /* grid-template-columns: 30% 200px 200px; */
+  /* grid-template-columns: repeat(3, 200px); */
+  /* grid-template-columns: 40% repeat(2, 200px); */
+  /* grid-template-columns: repeat(3, 1fr); */
+  grid-template-columns: 1fr repeat(2, 1fr);
+  gap: 10px 20px;
+}
