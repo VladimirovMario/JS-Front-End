@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards example</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.1/css/all.css">
+
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/card.css">
+    <link rel="stylesheet" href="styles/panel.css">
+
+</head>
+
+<body>
+
+    <main>
+
+        <!-- Card style - classic -->
+        <article class="card">
+            <div class="head">
+                <span class="head__tag">SPAIN</span>
+                <img class="head__img" src="images/unsplash-Spain.jpg" alt="Card image">
+            </div>
+
+            <div class="content content--icon">
+                <h2 class="content__title">Madrid, Spain</h2>
+                <p class="content__desc">Also known as The Imperial City</p>
+                <button class="content__icon">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+            </div>
+        </article>
+
+        <!-- Card - Read more -->
+        <article class="card card--read-more">
+            <div class="head">
+                <span class="head__tag">SPAIN</span>
+                <img class="head__img" src="images/tomas-nozina-UP22zkjJGZo-unsplash.jpg" alt="Card image">
+            </div>
+
+            <div class="content">
+                <h2 class="content__title">Toledo, Spain</h2>
+                <p class="content__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt omnis
+                    pariatur odio voluptatibus unde ipsum. Nihil doloribus quis, libero distinctio dolorum provident
+                    eum
+                    repellat odio, blanditiis ab ut voluptas sapiente?</p>
+                <button class="content__btn">View more</button>
+            </div>
+        </article>
+
+        <!-- Card - Background image -->
+        <article class="card card--bg-img">
+            <img class="card__bg-img" src="images/alex-azabache-ybtNz4PeyPI-unsplash.jpg" alt="Card image">
+
+            <div class="head">
+                <span class="head__tag">ITALY</span>
+                <button class="head__action">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+            </div>
+
+            <div class="content">
+                <h2 class="content__title">The Colosseum</h2>
+                <p class="content__desc">Rome, Italy</p>
+            </div>
+        </article>
+
+        <!-- Panel - component -->
+        <div class="layout-item-7 panel">
+            <i class="panel__icon fa-regular fa-comments"></i>
+            <p class="panel__text">Comments</p>
+        </div>
+
+
+    </main>
+
+</body>
+
+</html>
