@@ -1,0 +1,11 @@
+body {
+  background-image: linear-gradient(
+    to right,
+    #ceaf89,
+    #d1b494,
+    #d4b9a0,
+    #d6beab,
+    #d7c4b6
+  );
+  font-family: Georgia, serif;
+}
