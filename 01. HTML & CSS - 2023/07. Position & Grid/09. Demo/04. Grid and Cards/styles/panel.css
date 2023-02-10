@@ -1,0 +1,27 @@
+/*
+--------------
+Panel - component
+--------------
+*/
+.panel {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: -2px -1px 12px 1px #000000;
+  background-image: linear-gradient(to left, #ceaf89, #d5b69b, #dabfad, #ddc8be, #ddd2ce);
+  padding: 18px;
+  text-align: center;
+}
+
+.panel .panel__icon {
+  font-size: 40px;
+  color: #5c5d5e;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 2px #5c5d5e;
+}
+
+.panel .panel__text {
+  font-size: 24px;
+  color: #5c5d5e;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 2px #5c5d5e;
+}
