@@ -1,0 +1,70 @@
+html {
+  font-family: Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+body {
+  background-color: #eee;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  gap: 10px;
+  max-width: 15vw;
+  height: 35rem;
+}
+
+span {
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  
+  border: 1px solid black;
+  width: 120px;
+  height: 70px;
+}
+
+.item-1 {
+  order: 0;
+}
+
+.item-2 {
+  order: 1;
+}
+
+.item-3 {
+  order: 2;
+}
+
+.item-4 {
+  order: 3;
+}
+
+.item-5 {
+  order: 4;
+}
+.item-6 {
+  order: 5;
+}
+.item-7 {
+  order: 6;
+}
+.item-8 {
+  order: 7;
+}
+.item-9 {
+  order: 8;
+}
+.item-10 {
+  order: 9;
+}
+.item-11 {
+  order: 10;
+}
+.item-12 {
+  order: 11;
+}
