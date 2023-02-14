@@ -1,0 +1,52 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #eee;
+}
+
+div,
+section {
+  display: flex;
+  /* align-items: center; */
+}
+
+div {
+  max-width: 65vw;
+}
+
+span {
+  text-align: center;
+  border: 1px solid black;
+}
+
+.notes {
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.notes span {
+  flex-basis: 100%;
+}
+
+.week {
+  flex-wrap: wrap;
+}
+
+.week span {
+  padding-top: 10px;
+  height: 70px;
+  flex-grow: 1;
+}
+
+.week .workweek,
+.week .weekend {
+  flex-basis: 100%;
+}
