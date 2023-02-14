@@ -54,3 +54,9 @@
 - [Game: Flexbox Froggy](https://flexboxfroggy.com/)
 - [Game: Flex Box Adventure](https://codingfantasy.com/games/flexboxadventure)
 - [Safia SaaS Template](https://www.figma.com/community/file/892582971189995704)
+
+## 07 Media Queries
+
+- [A Complete Guide to CSS Media Queries](https://css-tricks.com/a-complete-guide-to-css-media-queries/)
+- [`@impot` + `@media`](https://developer.mozilla.org/en-US/docs/Web/CSS/@import#examples)
+- [Creating a Fluid Type Scale](https://moderncss.dev/generating-font-size-css-rules-and-creating-a-fluid-type-scale/)
