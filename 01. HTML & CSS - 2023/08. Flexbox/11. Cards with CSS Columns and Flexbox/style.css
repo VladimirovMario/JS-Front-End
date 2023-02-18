@@ -1,0 +1,53 @@
+body {
+  max-width: 1930px;
+  margin: 0 auto;
+  padding: 20px 60px 0px 60px;
+
+  height: 100vh;
+  background-color: rgb(238, 238, 238);
+}
+
+.cards-layout {
+  display: flex;
+  /* flex-direction: column; */
+
+  flex-wrap: wrap;
+  gap: 24px;
+
+  margin-bottom: 50px;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.masonry__card,
+.flex__card {
+  position: relative;
+  width: 360px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  box-shadow: 5px 5px 15px 5px #000000;
+}
+
+.masonry__card,
+.flex__card .head .head__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.masonry__card .content {
+  padding: 18px;
+}
+
+.masonry__card .footer p {
+  left: 18px;
+  bottom: 18px;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+}
