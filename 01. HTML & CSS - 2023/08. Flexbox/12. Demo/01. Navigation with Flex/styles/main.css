@@ -1,0 +1,48 @@
+body {
+  background-color: #ccc;
+  font-family: Georgia, serif;
+}
+
+.header {
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+  padding: 6px 24px;
+  background-color: #71625a;
+
+  /* flex  */
+  display: flex;
+  align-items: center;
+}
+
+.header .nav {
+  margin-left: auto;
+  margin-right: 24px;
+}
+
+.header .nav .nav__ul {
+  /* flex  */
+  display: flex;
+  gap: 12px;
+}
+
+.header .header__logo {
+  width: 150px;
+}
+
+.header .btn-login {
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.header .nav .nav__item .nav__item__link {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
