@@ -1,1 +1,1 @@
-![Screenshot_3](https://user-images.githubusercontent.com/103949296/218112181-9e73f665-0ab5-418b-9b8f-b5168f1500bc.png)
+![Screenshot 2023-02-21 at 14-59-30 Navigation Flexbox](https://user-images.githubusercontent.com/103949296/220356824-d640a117-88f9-40b8-9e91-972afd0d5140.png)
