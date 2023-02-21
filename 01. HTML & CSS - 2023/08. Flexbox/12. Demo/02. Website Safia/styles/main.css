@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@600&display=swap");
+
+:root {
+  --clr-primary-blue-900: #001a57;
+  --clr-primary-blue-800: #00308f;
+  --clr-primary-blue-600: #0059f7;
+  --clr-primary-blue-300: #689eff;
+  --clr-primary-blue-100: rgba(0, 89, 247, 0.16);
+
+  --clr-secondary-green-900: #66240a;
+  --clr-secondary-green-800: #c34b1e;
+  --clr-secondary-green-600: #f9724d;
+  --clr-secondary-green-300: #fbb6ab;
+  --clr-secondary-green-100: #fef1ef;
+
+  --clr-neutral-gray-900: #070e27;
+  --clr-neutral-gray-800: #081131;
+  --clr-neutral-gray-700: #162044;
+  --clr-neutral-gray-500: #4e5a85;
+  --clr-neutral-gray-300: #ccd2e9;
+  --clr-neutral-gray-200: #f4f7ff;
+
+  --clr-headings-white: #ffffff;
+
+  --page-padding-x-main: 190px;
+  --page-padding-x-small: 80px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--clr-neutral-gray-300);
+  font-family: "Sora", sans-serif;
+}
+
+/*
+----
+Typography
+---- 
+ */
+h1 {
+  font-size: 56px;
+  line-height: 64px;
+  letter-spacing: -0.04em;
+  color: var(--clr-headings-white);
+}
+
+h2 {
+  font-size: 48px;
+  line-height: 64px;
+  letter-spacing: -0.03em;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 40px;
+  letter-spacing: -0.03em;
+}
+
+h4 {
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+}
+
+h5 {
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+}
+
+/*
+----
+Section setup
+---- 
+ */
+.section {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 64px 0;
+}
+
+.section__title {
+  color: var(--clr-headings-white);
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 96px;
+}
+
+.section__sub-title {
+  color: var(--clr-neutral-gray-500);
+  text-align: center;
+  text-transform: uppercase;
+}
