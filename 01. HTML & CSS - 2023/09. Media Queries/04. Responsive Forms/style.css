@@ -1,0 +1,124 @@
+@import url("https://use.fontawesome.com/releases/v6.2.1/css/all.css");
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100vh;
+  background-color: #ffffff;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+  position: relative;
+  margin: 50px auto;
+  background-color: #f8f8f8;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 30px 20px;
+  max-width: 320px;
+}
+
+fieldset {
+  border: none;
+}
+
+legend {
+  position: absolute;
+  top: 0px;
+  left: -1px;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+
+  border: 1px solid black;
+  /* box-shadow: 2px 2px 2px 1px #000000; */
+  border-radius: 2px;
+  padding: 6px 70px 6px 10px;
+}
+
+p {
+  margin: 0px;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+button {
+  border: none;
+  padding: 6px 16px;
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 375px) {
+  body {
+    font-size: 12px;
+    font-weight: 600;
+    background-color: lightblue;
+  }
+  form {
+    min-width: 320px;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  body {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  form {
+    max-width: 360px;
+  }
+}
+
+@media screen and (min-width: 1448px) {
+  body {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  form {
+    max-width: 630px;
+  }
+
+  p {
+    display: inline-block;
+  }
+
+  input {
+    display: inline-block;
+    width: 70%;
+    margin-bottom: 18px;
+  }
+}
+
+@media screen and (min-width: 1927px) {
+  body {
+    font-size: 26px;
+    font-weight: 600;
+  }
+  form {
+    max-width: 680px;
+  }
+
+  p {
+    display: inline-block;
+  }
+
+  input {
+    display: inline-block;
+    width: 70%;
+    margin-bottom: 18px;
+  }
+}
