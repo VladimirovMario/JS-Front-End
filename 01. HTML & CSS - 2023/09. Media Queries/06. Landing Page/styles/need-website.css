@@ -1,0 +1,30 @@
+#need-website {
+  width: calc(100% - 2 * 320px);
+  margin: 0 auto;
+}
+
+#need-website .info {
+  /* flex */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 90px;
+}
+
+#need-website .info .info__img {
+  width: 30%;
+  color: aliceblue;
+}
+
+#need-website .info__wrapper {
+  width: 70%;
+
+  /* flex */
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+#need-website .info__wrapper .info__btn {
+  align-self: flex-start;
+}
