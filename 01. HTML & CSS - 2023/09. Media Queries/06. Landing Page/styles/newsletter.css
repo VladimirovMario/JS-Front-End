@@ -1,0 +1,21 @@
+#newsletter {
+  background-color: var(--clr-primary);
+}
+
+#newsletter .section__headings__title {
+  color: #fff;
+}
+
+#newsletter .form__control {
+  /* flex */
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+#newsletter .form__control .form__input {
+  padding: 10px;
+  width: 30%;
+  border: 2px solid black;
+  border-radius: 4px;
+}
