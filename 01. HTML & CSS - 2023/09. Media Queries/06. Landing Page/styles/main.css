@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap");
+
+:root {
+  --clr-primary: #68347b;
+  --clr-decs: #6d6d6d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image: url(/static/788-7888624_web-development-background-png.jpg);
+  /* background-repeat: no-repeat; */
+
+  font-family: Merriweather, serif;
+  font-size: 23px;
+}
+
+/* Typography */
+h1 {
+  font-size: 56px;
+  line-height: 64px;
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  font-size: 48px;
+  line-height: 64px;
+  letter-spacing: -0.03em;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 40px;
+  letter-spacing: -0.03em;
+}
+
+h4 {
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+}
+
+h5 {
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+}
+
+/* Section setup */
+.section {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+.section__headings {
+  /* flex */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.section__headings__title {
+  margin-bottom: 20px;
+}
+
+.section__headings__divider {
+  height: 4px;
+  width: 130px;
+  background-color: black;
+  margin-bottom: 60px;
+}
+
+/*
+@media screen and (min-width: 500px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  html {
+    font-size: 21px;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  html {
+    font-size: 23px;
+  }
+}
+*/
