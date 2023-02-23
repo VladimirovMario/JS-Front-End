@@ -1,0 +1,55 @@
+/* Section our team */
+.team__members {
+  width: calc(100% - 2 * 320px);
+  margin: 0 auto;
+
+  /* grid */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.team__members .member__wrapper {
+  padding: 12px 24px;
+
+  /* flex */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.member__wrapper .img__container {
+  overflow: hidden;
+  border-radius: 100%;
+  margin-bottom: 48px;
+
+  /* TODO make it responsible*/
+  width: 200px;
+  height: 200px;
+}
+
+.member__wrapper .img__container .member__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#team .member__wrapper .member__position {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.member__wrapper .member__desc {
+  text-align: center;
+}
+
+
+/* Section Testimonials */
+#testimonials .member__wrapper .member__position {
+  text-align: center;
+}
+
+#testimonials .member__wrapper .member__desc {
+    margin-bottom: 48px;
+}
