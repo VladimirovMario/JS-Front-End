@@ -1,0 +1,75 @@
+body {
+  font-family: Helvetica, sans-serif;
+  color: #646f79;
+}
+
+.section {
+  background-color: #f6f8f9;
+  max-width: 1920px;
+  padding: 48px 24px;
+  margin: 40px auto;
+
+  height: calc(100vh - 2 * 40px);
+  border-radius: 6px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+}
+
+.info__wrapper {
+  width: 40%;
+  padding: 10px 30px;
+  font-size: 0;
+}
+
+.info__title {
+  color: #273240;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.info__company {
+  font-size: 48px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #273240;
+  line-height: 1;
+}
+
+.info__desc {
+  font-size: 23px;
+  line-height: 1.5;
+}
+
+p {
+  margin-bottom: 40px;
+}
+
+.img {
+  position: absolute;
+  bottom: 0px;
+  right: 30px;
+  width: 30%;
+}
+
+.btn {
+  all: unset;
+  border-radius: 6px;
+  padding: 12px 24px;
+  border: 2px solid #273240;
+  font-size: 23px;
+  color: #273240;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn.btn--primary {
+  border: 2px solid #786eff;
+  background-color: #786eff;
+  color: white;
+  margin-right: 12px;
+}
