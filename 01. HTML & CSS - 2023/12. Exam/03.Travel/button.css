@@ -1,0 +1,18 @@
+/* Buttons */
+.btn {
+  all: unset;
+  padding: 6px 24px;
+  border-radius: 24px;
+  cursor: pointer;
+
+  color: #370511;
+  border: 2px solid #370511;
+
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: #370511;
+  color: #fff;
+}
