@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 23px;
+  max-width: 1880px;
+  margin: 0 auto;
+  /* background-color: #ccc; */
+}
+
+/* Header */
+
+.head {
+  position: relative;
+}
+
+.head__wrapper {
+  width: calc(100% - 2 * 220px);
+  margin: 0 auto;
+
+  /* flex */
+  display: flex;
+  align-items: center;
+  padding: 6px 24px;
+}
+
+.head .nav {
+  padding: 24px;
+  margin-left: auto;
+  margin-right: 24px;
+}
+
+.head .nav .nav__ul {
+  /* flex */
+  display: flex;
+  gap: 18px;
+}
+
+.head .nav .nav__item__link {
+  text-decoration: none;
+  color: black;
+}
+
+/* Logo section */
+.head .head__logo .head__logo__title {
+  color: black;
+  font-weight: 600;
+}
+
+.head .nav .nav__item__link.active {
+  background-color: #370511;
+  color: #fff;
+}
+
+/* hero */
+.section__wrapper {
+  max-width: calc(100% - 2 * 220px);
+  margin: 0 auto;
+}
+
+
+#hero {
+  height: 70vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 24px;
+
+  position: relative;
+}
+
+
+
+#hero .hero__img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+
+  width: 100%;
+  height: auto;
+  z-index: -1;
+}
+
+#hero .hero__info {
+  width: 50%;
+}
+
+#hero .hero__info__subtitle {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+#hero .hero__info__desc {
+  margin-bottom: 28px;
+}
+
+/* places */
+#places {
+  padding: 42px 0px;
+}
+
+#places .places__headings {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+#places .places__wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+#places .place {
+  border-radius: 8px;
+  overflow: hidden;
+
+  /* flex */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  gap: 32px;
+}
+
+.place .img__wrapper {
+  height: 30%;
+}
+
+.place .img__wrapper .place__img {
+  width: 100%;
+  height: 100%;
+  object-fit: center center;
+}
+
+.place__desc {
+  padding: 0px 16px;
+}
+
+.place__title {
+  text-align: center;
+}
+
+.place-btn {
+  align-self: center;
+}
+
+/* footer */
+footer {
+  background-color: black;
+  color: aliceblue;
+}
+
+.footer__wrapper {
+  padding: 84px 0px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+}
+
+.footer__ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+i {
+  color: #fff;
+}
+
+footer .icons {
+  display: flex;
+
+  gap: 32px;
+}
