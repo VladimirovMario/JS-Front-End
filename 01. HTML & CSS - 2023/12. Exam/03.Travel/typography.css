@@ -1,0 +1,42 @@
+/*
+Typography
+Make the font size for phones 12px
+Make the font size for screens larger than 500 14px
+Make the font size for screens larger than 600 16px
+Make the font size for screens larger than 800 18px
+Make the font size for screens larger than 1300 21px
+Make the font size for screens larger than 1800 23px
+*/
+
+h1 {
+  font-size: 56px;
+  /* line-height: 64px; */
+  /* letter-spacing: -0.04em; */
+}
+
+h2 {
+  font-size: 48px;
+  /* line-height: 64px; */
+  /* letter-spacing: -0.03em; */
+}
+
+h3 {
+  font-size: 36px;
+
+  /* line-height: 40px; */
+  /* letter-spacing: -0.03em; */
+}
+
+h4 {
+  font-size: 24px;
+
+  /* line-height: 32px; */
+  /* letter-spacing: -0.02em; */
+}
+
+h5 {
+  font-size: 20px;
+
+  /* line-height: 32px; */
+  /* letter-spacing: -0.02em; */
+}
