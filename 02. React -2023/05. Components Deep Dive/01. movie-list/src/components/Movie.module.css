@@ -1,0 +1,11 @@
+.movie-article {
+  margin: 0 auto;
+  max-width: 500px;
+  background-color: #ccc;
+  border-bottom: 10px solid black;
+  overflow: hidden;
+}
+
+.color {
+  background-color: lightcoral;
+}
