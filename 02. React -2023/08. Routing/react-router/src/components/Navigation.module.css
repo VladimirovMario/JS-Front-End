@@ -1,0 +1,31 @@
+.nav {
+  list-style: none;
+}
+
+.nav li {
+  display: inline-block;
+  margin-right: 24px;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: #61dafb;
+  text-decoration: underline;
+}
+
+.nav a.active-style {
+  color: orange;
+}
+
+button {
+  margin-bottom: 24px;
+  padding: 6px 12px;
+  background-color: #fff;
+  color: black;
+  cursor: pointer;
+  border-radius: 6px;
+}
