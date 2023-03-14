@@ -1,3 +1,4 @@
+import { Catalog } from "./components/Catalog/Catalog";
 import { CreateGame } from "./components/CreateGame/CreateGame";
 import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
@@ -14,7 +15,8 @@ function App() {
       {/* <Home /> */}
       {/* <Login /> */}
       {/* <Register /> */}
-      <CreateGame />
+      {/* <CreateGame /> */}
+      <Catalog />
 
       </main>
 
