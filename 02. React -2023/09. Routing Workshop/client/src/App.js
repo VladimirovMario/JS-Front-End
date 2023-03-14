@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import { Route, Routes } from "react-router-dom";
 
 import { Catalog } from "./components/Catalog/Catalog";
@@ -8,6 +10,12 @@ import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
 
 function App() {
+  const [games, setGames ] = useState([]);
+  useEffect(() => {
+    
+  }, []);
+
+
   return (
     <div id="box">
       <Header />
