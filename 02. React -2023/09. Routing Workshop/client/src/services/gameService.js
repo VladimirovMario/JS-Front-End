@@ -1,11 +1,10 @@
-import { request } from "./requester";
+import { get, post, put, del } from "./requester";
 
 const baseUrl = "http://localhost:3030/jsonstore/games";
 
 export const getAll = async () => {
-  const games = await request("GET", baseUrl);
-
-  console.log(games);
-  
+  const data = await get(baseUrl);
+  const games = Object.values(data);
+   
   return games;
 };
