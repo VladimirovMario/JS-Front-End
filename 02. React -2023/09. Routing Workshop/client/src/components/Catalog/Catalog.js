@@ -11,7 +11,7 @@ export const Catalog = ({ games }) => {
       ))}
 
       {/* <!-- Display paragraph: If there is no games  --> */}
-      {games.length || <h3 className="no-articles">No articles yet</h3>}
+      {!games.length && <h3 className="no-articles">No articles yet</h3>}
     </section>
   );
 };
