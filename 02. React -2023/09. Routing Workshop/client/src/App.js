@@ -10,6 +10,7 @@ import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
 import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
+import { GameDetails } from "./components/GameDetails/GameDetails";
 
 function App() {
   const [games, setGames] = useState([]);
@@ -26,7 +27,7 @@ function App() {
     // Post data in server
     const newGame = await gameService.create(data);
     // Update local state
-    setGames(state => [...state, newGame]);
+    setGames(state => [newGame, ...state]);
     // Redirect
     navigate("/catalog");
   };
@@ -45,6 +46,8 @@ function App() {
             element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />}
           />
           <Route path="/catalog" element={<Catalog games={games} />} />
+          <Route path="/catalog/:gameId" element={<GameDetails />} />
+
         </Routes>
       </main>
     </div>
