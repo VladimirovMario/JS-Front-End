@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import "./App.css";
 import Login from "./components/Auth/Login/Login";
 import Profile from "./components/Auth/Profile/Profile";
@@ -15,10 +15,28 @@ import NotFound from "./components/NotFound/NotFound";
 import ProductList from "./components/ProductList/ProductList";
 import InfoMessage from "./components/Shared/InfoMessage/InfoMessage";
 
+import * as gameService from "./services/gameService";
+
 function App() {
+  const [games, setGames] = useState([]);
+  // TODO finish the errors
+  // const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    gameService
+      .getAll()
+      .then((result) => {
+        setGames(result);
+        console.log(result);
+      })
+      .catch((err) => {
+        console.error(err.message);
+        // setErrors(err);
+      });
+  }, []);
+
   return (
     <Fragment>
-
       {/* In case of Error or Success */}
       <InfoMessage />
 
@@ -26,33 +44,32 @@ function App() {
 
       <main>
         {/* Home section */}
-        <Hero />
-        <ProductList />
+        {/* <Hero /> */}
+        {/* <ProductList /> */}
 
         {/* Catalog section*/}
         <Catalog />
 
         {/* Details component */}
-        <Details />
+        {/* <Details /> */}
 
         {/* Create component */}
-        <Create />
+        {/* <Create /> */}
 
         {/* Edit component */}
-        <Edit />
+        {/* <Edit /> */}
 
         {/* Register component */}
-        <Register />
+        {/* <Register /> */}
 
         {/* Login component */}
-        <Login />
+        {/* <Login /> */}
 
         {/* Profile component */}
-        <Profile />
+        {/* <Profile /> */}
 
         {/* NotFound component*/}
-        <NotFound />
-        
+        {/* <NotFound /> */}
       </main>
 
       <Footer />
