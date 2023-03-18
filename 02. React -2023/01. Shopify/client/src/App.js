@@ -48,7 +48,7 @@ function App() {
         {/* <ProductList /> */}
 
         {/* Catalog section*/}
-        <Catalog />
+        <Catalog games={games}/>
 
         {/* Details component */}
         {/* <Details /> */}

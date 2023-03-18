@@ -1,7 +1,9 @@
 import styles from "./Catalog.module.css";
 import ProductPs4 from "../ProductPs4/ProductPs4";
 
-export default function Catalog() {
+export default function Catalog({
+  games
+}) {
   return (
     <section className="section">
       <h2 className="section-title">Games for ps4</h2>
@@ -26,42 +28,10 @@ export default function Catalog() {
             </label>
         </form>   */}
 
-          <li>
+         
             {/* <!-- Product component--> */}
-            <ProductPs4 />
-          </li>
-
-          <li>
-            <ProductPs4 />
-          </li>
-
-          <li>
-            <ProductPs4 />
-          </li>
-
-          <li>
-            <ProductPs4 />
-          </li>
-
-          <li>
-            <ProductPs4 />
-          </li>
-
-          <li>
-            <ProductPs4 />
-          </li>
-
-          <li>
-            <ProductPs4 />
-          </li>
-
-          <li>
-            <ProductPs4 />
-          </li>
-
-          <li>
-            <ProductPs4 />
-          </li>
+            {games.map(game => <ProductPs4 key={game._id} {...game} />)}         
+              
         </ul>
       </div>
     </section>
