@@ -1,0 +1,12 @@
+.details-comments {
+  max-width: calc(100% - 2 * 100px);
+  margin: 0px auto;
+}
+
+.comments-title {
+  text-align: center;
+  font-size: 45px;
+  font-family: "Barlow", sans-serif;
+  color: var(--clr-white);
+  margin-bottom: 32px;
+}

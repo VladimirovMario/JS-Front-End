@@ -1,0 +1,59 @@
+/* TODO fix the profile page */
+.profile-card {
+  margin: 0 auto;
+  margin-bottom: 1.5em;
+
+  width: 620px;
+  height: 350px;
+  display: flex;
+
+  position: relative;
+  background-color: var(--clr-white);
+  box-shadow: 0px 0px 20px 4px var(--clr-pirate-gold);
+  color: var(--clr-abbey);
+}
+
+.profile-card-icon > img {
+  width: 330px;
+  padding: 30px;
+  margin-top: -1em;
+  margin-left: 0.2em;
+  height: 350px;
+}
+
+.profile-card-info {
+  width: 290px;
+  position: relative;
+  height: auto;
+}
+
+.profile-card-info h2 {
+  font-size: 23px;
+  text-align: center;
+  line-height: 1.6em;
+  word-wrap: break-word;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-family: "EB Garamond", serif;
+  color: var(--clr-abbey);
+}
+
+.profile-card-info > h3 {
+  font-size: 15.5px;
+  line-height: 1.5em;
+  word-wrap: break-word;
+  padding-left: 10px;
+  margin-left: 1em;
+  font-family: "EB Garamond", serif;
+}
+
+.profile-card-info > h4 {
+  font-size: 14.5px;
+  line-height: 1.5em;
+  word-wrap: break-word;
+  padding-left: 10px;
+  margin-top: 0.2em;
+  margin-left: 1em;
+  margin-top: 3em;
+  font-family: "EB Garamond", serif;
+}
