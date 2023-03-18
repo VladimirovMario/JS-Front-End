@@ -1,19 +1,18 @@
 import { Fragment, useEffect, useState } from "react";
 import "./App.css";
+
+import InfoMessage from "./components/Shared/InfoMessage/InfoMessage";
+import Header from "./components/Header/Header";
+import HomePage from "./components/Home/HomePage/HomePage";
+import Catalog from "./components/Catalog/Catalog";
+import Details from "./components/Details/Details";
+import Create from "./components/Create/Create";
+import Edit from "./components/Edit/Edit";
+import Register from "./components/Auth/Register/Register";
 import Login from "./components/Auth/Login/Login";
 import Profile from "./components/Auth/Profile/Profile";
-import Register from "./components/Auth/Register/Register";
-import Catalog from "./components/Catalog/Catalog";
-import Create from "./components/Create/Create";
-import Details from "./components/Details/Details";
-import Edit from "./components/Edit/Edit";
-
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
-import Hero from "./components/Hero/Hero";
 import NotFound from "./components/NotFound/NotFound";
-import ProductList from "./components/ProductList/ProductList";
-import InfoMessage from "./components/Shared/InfoMessage/InfoMessage";
+import Footer from "./components/Footer/Footer";
 
 import * as gameService from "./services/gameService";
 
@@ -42,34 +41,24 @@ function App() {
 
       <Header />
 
-      <main>
-        {/* Home section */}
-        {/* <Hero /> */}
-        {/* <ProductList /> */}
-
-        {/* Catalog section*/}
+      <main>  
+        <HomePage />
+        
         <Catalog games={games}/>
+     
+        <Details />
 
-        {/* Details component */}
-        {/* <Details /> */}
+        <Create />
 
-        {/* Create component */}
-        {/* <Create /> */}
+        <Edit />
 
-        {/* Edit component */}
-        {/* <Edit /> */}
+        <Register />
 
-        {/* Register component */}
-        {/* <Register /> */}
+        <Login />
 
-        {/* Login component */}
-        {/* <Login /> */}
+        <Profile />
 
-        {/* Profile component */}
-        {/* <Profile /> */}
-
-        {/* NotFound component*/}
-        {/* <NotFound /> */}
+        <NotFound />
       </main>
 
       <Footer />

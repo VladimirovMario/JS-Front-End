@@ -23,7 +23,7 @@ price,
           <div className={styles["content"]}>
             <h2 className={styles["content-title"]}>{title}</h2>
             <p className={styles["content-genre"]}>Genre: {genre}</p>
-            <p className={styles["content-desc"]}>{`${description.substring(0, 25)}...`}</p>
+            <p className={styles["content-desc"]}>{`${description?.substring(0, 25)}...`}</p>
 
             <div className={styles["icon-wrapper"]}>
               <p className={styles["content-price"]}>{price}$</p>
