@@ -25,7 +25,7 @@ export default function Header() {
 
           {/* <!-- Logged users --> */}
           <div className={styles["user-links"]}>
-            <li><Link to={"/create"}>Create Publication</Link></li>
+            <li><Link to={"/create-product"}>Create Publication</Link></li>
             <li><Link to={"/auth/profile"}>Profile</Link></li>
             <li><Link to={"/auth/logout"}>Logout</Link></li>
           </div>

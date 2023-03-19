@@ -44,26 +44,20 @@ function App() {
 
       <main>
         <Routes>
+
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<Catalog games={games} />} />
 
-          {/* 
+          <Route path="/catalog/:gameId" element={<Details />} />
+          <Route path="/create-product" element={<Create />} />
 
-          <Details />
+          <Route path="/edit" element={<Edit />} />
 
-          <Create />
-
-          <Edit />
-
-          <Register />
-
-          <Login />
-
-          <Profile />
-
-           */}
-
+          <Route path="/auth/register" element={<Register />} />
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/profile" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
+
         </Routes>
       </main>
 

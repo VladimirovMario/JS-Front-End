@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./ProductPs4.module.css";
 
 export default function ProductPs4({
@@ -11,7 +12,7 @@ price,
 }) {
   return (
     <li>
-      <a className={styles["product-box"]} href="/details/id">
+      <Link className={styles["product-box"]} to={`/catalog/${_id}`}>
         <article className={styles["card"]}>
           <div className={styles["thumbnail"]}>
             <img
@@ -41,7 +42,7 @@ price,
             </div>
           </div>
         </article>
-      </a>
+      </Link>
     </li>
   );
 }

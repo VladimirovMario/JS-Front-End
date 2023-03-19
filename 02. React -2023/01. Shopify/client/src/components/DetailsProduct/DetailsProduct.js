@@ -1,28 +1,36 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styles from "./DetailsProduct.module.css";
+import { getById } from "../../services/gameService";
 
 export default function DetailsProduct() {
+  const { gameId } = useParams();
+  const [game, setGame] = useState({});
+
+  useEffect(() => {
+    getById(gameId).then((res) => {
+      setGame(res);
+      // console.log(`from details `, res);
+    });
+  }, [gameId]);
+
   return (
     <div className={styles["details-card"]}>
       <div className={styles["details-image-wrapper"]}>
         <img
           className={styles["details-card-image"]}
-          src="https://cdn.ozone.bg/media/catalog/product/cache/1/image/400x498/a4e40ebdc3e371adff845072e1c73f37/g/r/700742e53273a67f99783cd52c84357c/grand-theft-auto-v---premium-edition-ps4-30.jpg"
-          alt="art-image2"
+          src={game.imageUrl}
+          alt={`${game.title}.image`}
         />
       </div>
       <article className={styles["card-content"]}>
-        <h2 className={styles["card-content-title"]}>Grand Theft Auto V</h2>
-        <p className={styles["content-genre"]}>Genre: Action</p>
-        <p className={styles["content-desc"]}>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur
-          nemo maiores corrupti ipsum est eius, sint accusamus cupiditate
-          voluptatem ea? Eveniet, provident! Officia unde assumenda atque eaque,
-          a quos repellat.
-        </p>
+        <h2 className={styles["card-content-title"]}>{game.title}</h2>
+        <p className={styles["content-genre"]}>Genre: {game.genre}</p>
+        <p className={styles["content-desc"]}>{game.description}</p>
         <div className={styles["desc-divider"]}></div>
 
         <div className={styles["icon-wrapper"]}>
-          <p className={styles["content-price"]}>34.99$</p>
+          <p className={styles["content-price"]}>{game.price}$</p>
           <div className={"icon-btn"}>
             {/* <!-- User only --> */}
             <button className={`${styles["heart-icon"]} btn`}>
