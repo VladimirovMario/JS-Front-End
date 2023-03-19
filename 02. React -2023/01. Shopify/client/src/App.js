@@ -19,11 +19,14 @@ import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [games, setGames] = useState([]);
+
   // TODO finish the errors
   // const [errors, setErrors] = useState({});
 
   useEffect(() => {
     gameService
+    // TODO see how to load separately
+      // .getLatestsGames()
       .getAll()
       .then((result) => {
         setGames(result);
@@ -45,7 +48,7 @@ function App() {
       <main>
         <Routes>
 
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage games={games}/>} />
           <Route path="/catalog" element={<Catalog games={games} />} />
 
           <Route path="/catalog/:gameId" element={<Details />} />
