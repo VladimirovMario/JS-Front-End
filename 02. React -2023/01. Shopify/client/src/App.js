@@ -15,6 +15,7 @@ import NotFound from "./components/NotFound/NotFound";
 import Footer from "./components/Footer/Footer";
 
 import * as gameService from "./services/gameService";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [games, setGames] = useState([]);
@@ -41,24 +42,29 @@ function App() {
 
       <Header />
 
-      <main>  
-        <HomePage />
-        
-        <Catalog games={games}/>
-     
-        <Details />
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/catalog" element={<Catalog games={games} />} />
 
-        <Create />
+          {/* 
 
-        <Edit />
+          <Details />
 
-        <Register />
+          <Create />
 
-        <Login />
+          <Edit />
 
-        <Profile />
+          <Register />
 
-        <NotFound />
+          <Login />
+
+          <Profile />
+
+           */}
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
 
       <Footer />
