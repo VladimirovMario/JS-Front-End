@@ -10,3 +10,8 @@
   border-radius: 6px;
   background-color: transparent;
 }
+
+.no-publications {
+  text-align: center;
+  color: var(--clr-white);
+}

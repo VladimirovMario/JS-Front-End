@@ -1,9 +1,7 @@
 import styles from "./Catalog.module.css";
 import ProductPs4 from "../ProductPs4/ProductPs4";
 
-export default function Catalog({
-  games
-}) {
+export default function Catalog({ games }) {
   return (
     <section className="section">
       <h2 className="section-title">Games for ps4</h2>
@@ -12,10 +10,8 @@ export default function Catalog({
       {/* <!-- Products --> */}
       <div className={styles["product-wrapper"]}>
         <ul className={styles["product-ul"]}>
-
-
           {/* <!-- SEARCH FORM --> */}
-           {/* <form className="search-form">
+          {/* <form className="search-form">
             <div className="col aligned">
                 <label>
                     <span>Terms:</span>
@@ -28,11 +24,13 @@ export default function Catalog({
             </label>
         </form>   */}
 
-         
-            {/* <!-- Product component--> */}
-            {games.map(game => <ProductPs4 key={game._id} {...game} />)}         
-              
+          {/* <!-- Product component--> */}
+          {games.map((game) => (
+            <ProductPs4 key={game._id} {...game} />
+          ))}
         </ul>
+
+        {!games.length && <h3 className={styles['no-publications']} >No publications yet. Be the first one.</h3>}
       </div>
     </section>
   );
