@@ -9,9 +9,17 @@ export const useForm = (initialValues, onSubmitHandler) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
     if (onSubmitHandler) {
-      onSubmitHandler(formValues);
-      // console.log(formValues);
+      
+      if (Object.values(formValues).every((v) => v.trim() !== ``)) {
+        onSubmitHandler(formValues);
+
+        console.log(formValues);
+        formValues.text = "";
+      } else {
+        alert("Please fill all the fields!");
+      }
     }
   };
 

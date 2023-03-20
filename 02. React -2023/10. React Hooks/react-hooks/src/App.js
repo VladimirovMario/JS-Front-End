@@ -4,7 +4,9 @@ import { Header } from "./components/Header";
 import { TodoList } from "./components/TodoList";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import { AddTodoModal } from "./components/AddTodoModal";
+import { TodoContext } from "./contexts/TodoContext";
 
 const baseUrl = "http://localhost:3030/jsonstore/todos";
 
@@ -17,7 +19,7 @@ function App() {
       .then((res) => res.json())
       .then((result) => {
         setTodoList(Object.values(result));
-        console.log(Object.values(result));
+        // console.log(Object.values(result));
       });
   }, []);
 
@@ -27,12 +29,11 @@ function App() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(values),
+      body: JSON.stringify({ ...values, isCompleted: false }),
     });
-
     const result = await response.json();
-    
     setShowAddTodo(false);
+    setTodoList((state) => [result, ...state]);
   };
 
   const onTodoAddClick = () => {
@@ -43,14 +44,59 @@ function App() {
     setShowAddTodo(false);
   };
 
+  const onTodoDeleteClick = async (todoId) => {
+    const response = await fetch(`${baseUrl}/${todoId}`, { method: "DELETE" });
+    if (response.ok) {
+      setTodoList((state) => state.filter((todo) => todo._id !== todoId));
+    }
+    // console.log(response);
+  };
+
+  const onTodoClick = async (todoId) => {
+    const selectedTodo = todoList.find((todo) => todo._id === todoId);
+    console.log(selectedTodo);
+
+    const response = await fetch(`${baseUrl}/${todoId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...selectedTodo,
+        isCompleted: !selectedTodo.isCompleted,
+      }),
+    });
+
+    if (response.ok) {
+      setTodoList((state) =>
+        state.map((todo) =>
+          todo._id === todoId ? { ...todo, isCompleted: !todo.isCompleted } : todo
+        )
+      );
+    }
+  };
+
+  const contextValue = {
+    onTodoDeleteClick,
+    onTodoClick,
+  };
+
   return (
-    <div>
+    <TodoContext.Provider value={contextValue}>
       <Header />
 
-      <TodoList todoList={todoList} onTodoAddClick={onTodoAddClick} />
+      <TodoList
+        todoList={todoList}
+        onTodoAddClick={onTodoAddClick}
+        // onTodoDeleteClick={onTodoDeleteClick}
+      />
 
-      <AddTodoModal show={showAddTodo} onTodoAddSubmit={onTodoAddSubmit} onTodoAddClose={onTodoAddClose} />
-    </div>
+      <AddTodoModal
+        show={showAddTodo}
+        onTodoAddSubmit={onTodoAddSubmit}
+        onTodoAddClose={onTodoAddClose}
+      />
+    </TodoContext.Provider>
   );
 }
 
