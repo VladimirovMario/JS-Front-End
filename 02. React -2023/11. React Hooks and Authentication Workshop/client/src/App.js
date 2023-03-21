@@ -41,7 +41,7 @@ function App() {
     try {
       const result = await authService.login(data);
       setAuth(result);
-      navigate('/catalog');
+      navigate("/catalog");
       // console.log(result);
       // { email: "peter@abv.bg", _id: ..., accessToken: ... }
     } catch (error) {
@@ -53,7 +53,8 @@ function App() {
     onLoginSubmit,
     userId: auth._id,
     token: auth.accessToken,
-    userEmail: auth.email
+    userEmail: auth.email,
+    isAuthenticated: !!auth.accessToken,
   };
 
   return (
