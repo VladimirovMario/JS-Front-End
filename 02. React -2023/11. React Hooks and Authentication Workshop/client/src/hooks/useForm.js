@@ -15,8 +15,8 @@ export const useForm = (initialValues, onSubmitHandler) => {
       if (Object.values(values).every((v) => v.trim() !== ``)) {
         // console.log("useForm hook", values);
         onSubmitHandler(values);
-        values.email = ''
-        values.password = ''
+        // values.email = ''
+        // values.password = ''
       } else {
         alert("All fields are required!");
       }

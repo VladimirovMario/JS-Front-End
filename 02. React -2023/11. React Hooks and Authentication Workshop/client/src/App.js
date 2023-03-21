@@ -49,8 +49,26 @@ function App() {
     }
   };
 
+  const registerSubmit = async (data) => {
+    const { "confirm-password": repeatPass, ...registerData } = data;
+
+    try {
+      if (repeatPass !== registerData.password) {
+        throw { message: "Password's don't match!" };
+      }
+      const result = await authService.register(registerData);
+      setAuth(result);
+      navigate("/catalog");
+      // console.log(result);
+      // Object { email: "george@abv.bg", password: ... , _createdOn: 1679414121028, _id: ... , accessToken: ... }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   const contextValue = {
     onLoginSubmit,
+    registerSubmit,
     userId: auth._id,
     token: auth.accessToken,
     userEmail: auth.email,
