@@ -18,7 +18,6 @@ import { GameDetails } from "./components/GameDetails/GameDetails";
 function App() {
   const [games, setGames] = useState([]);
   const [auth, setAuth] = useState({});
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,14 +37,23 @@ function App() {
   };
 
   const onLoginSubmit = async (data) => {
-    console.log("onLoginSubmit", data);
-    const result = await authService.login(data);
-    console.log(result);
-    // { email: "peter@abv.bg", _id: ..., accessToken: ... }
+    // console.log("onLoginSubmit", data);
+    try {
+      const result = await authService.login(data);
+      setAuth(result);
+      navigate('/catalog');
+      // console.log(result);
+      // { email: "peter@abv.bg", _id: ..., accessToken: ... }
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   const contextValue = {
     onLoginSubmit,
+    userId: auth._id,
+    token: auth.accessToken,
+    userEmail: auth.email
   };
 
   return (
