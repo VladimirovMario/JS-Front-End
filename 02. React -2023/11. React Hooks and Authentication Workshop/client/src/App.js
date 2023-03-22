@@ -76,6 +76,10 @@ function App() {
     setAuth({});
   };
 
+  const onDeleteClickHandler = (gameId) => {
+    setGames(state => state.filter(g => g._id !== gameId));
+  }
+
   const contextValue = {
     onLoginSubmit,
     registerSubmit,
@@ -102,7 +106,7 @@ function App() {
               element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />}
             />
             <Route path="/catalog" element={<Catalog games={games} />} />
-            <Route path="/catalog/:gameId" element={<GameDetails />} />
+            <Route path="/catalog/:gameId" element={<GameDetails onDeleteClickHandler={onDeleteClickHandler} />} />
           </Routes>
         </main>
       </div>

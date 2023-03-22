@@ -21,6 +21,8 @@ export const gameServiceFactory = (token) => {
     return result;
   };
 
+  const deleteGame = (gameId) => request.delete(`${baseUrl}/${gameId}`);
+
   const addComment = async (gameId, data) => {
     const result = await request.post(`${baseUrl}/${gameId}/comments`, data);
     // console.log(result);
@@ -31,6 +33,7 @@ export const gameServiceFactory = (token) => {
     getAll,
     getOne,
     create,
+    delete: deleteGame,
     addComment,
   };
 };

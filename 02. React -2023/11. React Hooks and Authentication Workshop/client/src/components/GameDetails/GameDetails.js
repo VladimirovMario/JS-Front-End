@@ -1,19 +1,24 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 import { useService } from "../../hooks/useService";
 import { gameServiceFactory } from "../../services/gameService";
+import { AuthContext } from "../../contexts/AuthContext";
+
 import * as commentService from "../../services/commentService";
 
-export const GameDetails = () => {
+export const GameDetails = ({ onDeleteClickHandler }) => {
   const { gameId } = useParams();
-  const [game, setGame] = useState({});
+  const { userId } = useContext(AuthContext);
   const gameService = useService(gameServiceFactory);
+  const navigate = useNavigate();
 
+  const [game, setGame] = useState({});
   const [username, setUsername] = useState("");
   const [comment, setComment] = useState("");
-
   const [comments, setComments] = useState([]);
+
+  const isOwner = userId === game._ownerId;
 
   useEffect(() => {
     gameService
@@ -38,10 +43,17 @@ export const GameDetails = () => {
       comment,
     });
 
-    setComments((state) => [newComment, ...state]);
-
+    setGame((state) => ({...state, comments: { ...state.comments, [newComment._id]: newComment },}));
     setUsername("");
     setComment("");
+  };
+
+  const onDeleteClick = async () => {
+    // react-confirm
+    await gameService.delete(gameId);
+    onDeleteClickHandler(gameId);
+
+    navigate("/catalog");
   };
 
   return (
@@ -74,14 +86,16 @@ export const GameDetails = () => {
         </div>
 
         {/* <!-- Edit/Delete buttons ( Only for creator of this game )  --> */}
-        <div className="buttons">
-          <a href="/#" className="button">
-            Edit
-          </a>
-          <a href="/#" className="button">
-            Delete
-          </a>
-        </div>
+        {isOwner && (
+          <div className="buttons">
+            <Link to="/" className="button">
+              Edit
+            </Link>
+            <button onClick={onDeleteClick} className="button">
+              Delete
+            </button>
+          </div>
+        )}
       </div>
 
       {/* <!-- Bonus --> */}
