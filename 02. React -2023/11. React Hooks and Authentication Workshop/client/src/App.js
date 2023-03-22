@@ -70,9 +70,9 @@ function App() {
     }
   };
 
-  const onLogout = () => {
+  const onLogout = async () => {
     //TODO: authorized request
-    // authService.logout();
+    await authService.logout();
     setAuth({});
   };
 
