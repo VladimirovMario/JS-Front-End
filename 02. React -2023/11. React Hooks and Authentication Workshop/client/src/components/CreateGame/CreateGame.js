@@ -5,7 +5,7 @@ import { useForm } from "../../hooks/useForm";
 import { formValidations } from "../../utils/formValidations";
 
 export const CreateGame = ({ onCreateGameSubmit }) => {
-  const { values, changeHandler, onSubmit } = useForm(
+  const { values, onChangeHandler, onSubmit } = useForm(
     {
       title: "",
       category: "",
@@ -42,7 +42,7 @@ export const CreateGame = ({ onCreateGameSubmit }) => {
             name="title"
             placeholder="Enter game title..."
             value={values.title}
-            onChange={changeHandler}
+            onChange={onChangeHandler}
             onBlur={validateForm}
           />
           {formErrors && <p>{formErrors.title}</p>}
@@ -54,7 +54,7 @@ export const CreateGame = ({ onCreateGameSubmit }) => {
             name="category"
             placeholder="Enter game category..."
             value={values.category}
-            onChange={changeHandler}
+            onChange={onChangeHandler}
             onBlur={validateForm}
           />
 
@@ -66,7 +66,7 @@ export const CreateGame = ({ onCreateGameSubmit }) => {
             min="1"
             placeholder="1"
             value={values.maxLevel}
-            onChange={changeHandler}
+            onChange={onChangeHandler}
             onBlur={validateForm}
           />
 
@@ -77,7 +77,7 @@ export const CreateGame = ({ onCreateGameSubmit }) => {
             name="imageUrl"
             placeholder="Upload a photo..."
             value={values.imageUrl}
-            onChange={changeHandler}
+            onChange={onChangeHandler}
             onBlur={validateForm}
           />
 
@@ -86,7 +86,7 @@ export const CreateGame = ({ onCreateGameSubmit }) => {
             name="summary"
             id="summary"
             value={values.summary}
-            onChange={changeHandler}
+            onChange={onChangeHandler}
             onBlur={validateForm}
           ></textarea>
           <input className="btn submit" type="submit" value="Create Game" />
