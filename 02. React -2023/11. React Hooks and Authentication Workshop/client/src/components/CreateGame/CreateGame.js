@@ -1,14 +1,20 @@
 import { useState } from "react";
+
+import { useForm } from "../../hooks/useForm";
+
 import { formValidations } from "../../utils/formValidations";
 
 export const CreateGame = ({ onCreateGameSubmit }) => {
-  const [values, setValues] = useState({
-    title: "",
-    category: "",
-    maxLevel: "",
-    imageUrl: "",
-    summary: "",
-  });
+  const { values, changeHandler, onSubmit } = useForm(
+    {
+      title: "",
+      category: "",
+      maxLevel: "",
+      imageUrl: "",
+      summary: "",
+    },
+    onCreateGameSubmit
+  );
 
   const [formErrors, setFormErrors] = useState({
     title: "",
@@ -18,24 +24,15 @@ export const CreateGame = ({ onCreateGameSubmit }) => {
     summary: "",
   });
 
-  const onChangeHandler = (e) => {
-      setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    onCreateGameSubmit(values);
-  };
-
   const validateForm = (e) => {
     const errors = formValidations(e);
     setFormErrors(errors);
     // console.log(errors);
-  }
+  };
 
   return (
     <section id="create-page" className="auth">
-      <form id="create" onSubmit={onSubmit}>
+      <form id="create" method="post" onSubmit={onSubmit}>
         <div className="container">
           <h1>Create Game</h1>
           <label htmlFor="leg-title">Legendary title:</label>
@@ -45,11 +42,10 @@ export const CreateGame = ({ onCreateGameSubmit }) => {
             name="title"
             placeholder="Enter game title..."
             value={values.title}
-            onChange={onChangeHandler}
+            onChange={changeHandler}
             onBlur={validateForm}
           />
           {formErrors && <p>{formErrors.title}</p>}
-          
 
           <label htmlFor="category">Category:</label>
           <input
@@ -58,7 +54,7 @@ export const CreateGame = ({ onCreateGameSubmit }) => {
             name="category"
             placeholder="Enter game category..."
             value={values.category}
-            onChange={onChangeHandler}
+            onChange={changeHandler}
             onBlur={validateForm}
           />
 
@@ -70,7 +66,7 @@ export const CreateGame = ({ onCreateGameSubmit }) => {
             min="1"
             placeholder="1"
             value={values.maxLevel}
-            onChange={onChangeHandler}
+            onChange={changeHandler}
             onBlur={validateForm}
           />
 
@@ -81,7 +77,7 @@ export const CreateGame = ({ onCreateGameSubmit }) => {
             name="imageUrl"
             placeholder="Upload a photo..."
             value={values.imageUrl}
-            onChange={onChangeHandler}
+            onChange={changeHandler}
             onBlur={validateForm}
           />
 
@@ -90,7 +86,7 @@ export const CreateGame = ({ onCreateGameSubmit }) => {
             name="summary"
             id="summary"
             value={values.summary}
-            onChange={onChangeHandler}
+            onChange={changeHandler}
             onBlur={validateForm}
           ></textarea>
           <input className="btn submit" type="submit" value="Create Game" />
