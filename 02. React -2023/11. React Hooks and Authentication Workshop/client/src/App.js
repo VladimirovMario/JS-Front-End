@@ -14,6 +14,7 @@ import { Home } from "./components/Home/Home";
 import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
 import { GameDetails } from "./components/GameDetails/GameDetails";
+import { Logout } from "./components/Logout/Logout";
 
 function App() {
   const [games, setGames] = useState([]);
@@ -54,7 +55,7 @@ function App() {
 
     try {
       if (repeatPass !== registerData.password) {
-        throw { message: "Password's don't match!" };
+        throw new Error("Password's don't match!");
       }
       const result = await authService.register(registerData);
       setAuth(result);
@@ -66,9 +67,16 @@ function App() {
     }
   };
 
+  const onLogout = () => {
+    //TODO: authorized request
+    // authService.logout();
+    setAuth({});
+  }
+
   const contextValue = {
     onLoginSubmit,
     registerSubmit,
+    onLogout,
     userId: auth._id,
     token: auth.accessToken,
     userEmail: auth.email,
@@ -84,6 +92,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
             <Route path="/register" element={<Register />} />
             <Route
               path="/create-game"
