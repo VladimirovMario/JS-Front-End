@@ -15,6 +15,7 @@ import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
 import { GameDetails } from "./components/GameDetails/GameDetails";
 import { Logout } from "./components/Logout/Logout";
+import { EditGame } from "./components/EditGame/EditGame";
 
 function App() {
   const navigate = useNavigate();
@@ -80,6 +81,13 @@ function App() {
     setGames(state => state.filter(g => g._id !== gameId));
   }
 
+  const onGameEditSubmit = async (values) => {
+    const result = await gameService.edit(values._id, values);
+    // console.log(result);
+    setGames(state => state.map(game => game._id === values._id ? result : game))
+    navigate(`/catalog/${values._id}`);
+  }
+
   const contextValue = {
     onLoginSubmit,
     registerSubmit,
@@ -107,6 +115,7 @@ function App() {
             />
             <Route path="/catalog" element={<Catalog games={games} />} />
             <Route path="/catalog/:gameId" element={<GameDetails onDeleteClickHandler={onDeleteClickHandler} />} />
+            <Route path="/catalog/:gameId/edit" element={<EditGame onGameEditSubmit={onGameEditSubmit} />} />          
           </Routes>
         </main>
       </div>

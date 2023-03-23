@@ -88,7 +88,7 @@ export const GameDetails = ({ onDeleteClickHandler }) => {
         {/* <!-- Edit/Delete buttons ( Only for creator of this game )  --> */}
         {isOwner && (
           <div className="buttons">
-            <Link to="/" className="button">
+            <Link to={`/catalog/${game._id}/edit`} className="button">
               Edit
             </Link>
             <button onClick={onDeleteClick} className="button">

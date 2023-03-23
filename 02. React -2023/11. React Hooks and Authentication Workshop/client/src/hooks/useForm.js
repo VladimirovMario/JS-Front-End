@@ -9,23 +9,27 @@ export const useForm = (initialValues, onSubmitHandler) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     if (onSubmitHandler) {
-
-      if (Object.values(values).every((v) => v.trim() !== ``)) {
-        // console.log("useForm hook", values);
-        onSubmitHandler(values);
-        // values.email = ''
-        // values.password = ''
-      } else {
-        alert("All fields are required!");
-      }
+      // if (Object.values(values).every((v) => v.trim() !== ``)) {
+      //   // console.log("useForm hook", values);
+      onSubmitHandler(values);
+      //   // values.email = ''
+      //   // values.password = ''
+      // } else {
+      //   alert("All fields are required!");
+      // }
     }
+  };
+
+  const changeValues = (newValues) => {
+    // TODO: Validate newValues shape (with initialValues)
+    setValues(newValues);
   };
 
   return {
     values,
     onChangeHandler,
     onSubmit,
+    changeValues,
   };
 };
