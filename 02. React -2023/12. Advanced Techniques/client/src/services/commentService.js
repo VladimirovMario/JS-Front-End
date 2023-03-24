@@ -15,8 +15,8 @@ export const getCurrGameComments = async (gameId) => {
   return comments;
 };
 
-export const create = async (data) => {
-  const result = await request.put(baseUrl, data);
+export const create = async (gameId, comment) => {
+  const result = await request.post(baseUrl, { gameId, comment });
   // console.log(result);
   // Object { gameId: "401853c9-059f-4d1c-82a8-b1e95377b62c", username: "George", comment: "Great game.", _id: "d5f787fc-61fe-43f5-8b06-b024be4cd2f2" }
   return result;
