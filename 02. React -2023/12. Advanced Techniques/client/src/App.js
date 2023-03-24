@@ -14,6 +14,7 @@ import { Register } from "./components/Register/Register";
 import { GameDetails } from "./components/GameDetails/GameDetails";
 import { Logout } from "./components/Logout/Logout";
 import { EditGame } from "./components/EditGame/EditGame";
+// import { withAuth } from "./hoc/withAuth";
 
 function App() {
   const navigate = useNavigate();
@@ -44,6 +45,8 @@ function App() {
     navigate(`/catalog/${values._id}`);
   }
 
+  // const EnhancedLogin = withAuth(Login);
+
   return (
     <AuthProvider>
       <div id="box">
@@ -52,6 +55,7 @@ function App() {
         <main id="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
+            {/* <Route path="/login" element={<EnhancedLogin />} /> */}
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/register" element={<Register />} />

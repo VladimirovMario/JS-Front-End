@@ -10,7 +10,10 @@ const LoginFormKeys = {
   Password: "password",
 };
 
-export const Login = () => {
+export const Login = (
+  // {auth},
+) => {
+  // const {onLoginSubmit} = auth
   const { onLoginSubmit } = useContext(AuthContext);
 
   const { values, onChangeHandler, onSubmit } = useForm(
