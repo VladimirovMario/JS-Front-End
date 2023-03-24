@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 import { gameServiceFactory } from "./services/gameService";
-import { authServiceFactory } from "./services/authService";
 
-import { AuthContext } from "./contexts/AuthContext";
+import { AuthProvider } from "./contexts/AuthContext";
 
 import { Catalog } from "./components/Catalog/Catalog";
 import { CreateGame } from "./components/CreateGame/CreateGame";
@@ -21,9 +19,8 @@ function App() {
   const navigate = useNavigate();
 
   const [games, setGames] = useState([]);
-  const [auth, setAuth] = useState({});
-  const  gameService  = gameServiceFactory(auth.accessToken);
-  const  authService  = authServiceFactory(auth.accessToken);
+  const  gameService  = gameServiceFactory(); //auth.accessToken
+ 
 
   useEffect(() => {
     gameService.getAll().then((data) => {
@@ -37,35 +34,6 @@ function App() {
     navigate("/catalog");
   };
 
-  const onLoginSubmit = async (data) => {
-    try {
-      const result = await authService.login(data);
-      setAuth(result);
-      navigate("/catalog");
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  const registerSubmit = async (data) => {
-    const { "confirm-password": repeatPass, ...registerData } = data;
-    try {
-      if (repeatPass !== registerData.password) {
-        throw new Error("Password's don't match!");
-      }
-      const result = await authService.register(registerData);
-      setAuth(result);
-      navigate("/catalog");         
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  const onLogout = async () => {
-    await authService.logout();
-    setAuth({});
-  };
-
   const onDeleteClickHandler = (gameId) => {
     setGames(state => state.filter(g => g._id !== gameId));
   }
@@ -76,18 +44,8 @@ function App() {
     navigate(`/catalog/${values._id}`);
   }
 
-  const contextValue = {
-    onLoginSubmit,
-    registerSubmit,
-    onLogout,
-    userId: auth._id,
-    token: auth.accessToken,
-    userEmail: auth.email,
-    isAuthenticated: !!auth.accessToken,
-  };
-
   return (
-    <AuthContext.Provider value={contextValue}>
+    <AuthProvider>
       <div id="box">
         <Header />
 
@@ -104,7 +62,7 @@ function App() {
           </Routes>
         </main>
       </div>
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
 
