@@ -22,8 +22,22 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const onRegisterSubmit = async (data) => {
+    try {
+      if (data.password !== data.repass) {
+        throw new Error("Passwords don't match!");
+      }
+      const result = await authService.register(data);
+      setAuth(result);
+      navigate("/catalog");      
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   const contextValues = {
     onLoginSubmit,
+    onRegisterSubmit,
     userId: auth._id,
     userEmail: auth.email,
     userUsername: auth.username,
