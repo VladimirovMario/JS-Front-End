@@ -1,4 +1,4 @@
-import { get, post, put, del } from "./requester";
+import { requestFactory } from "./requester";
 
 const limit = 3;
 
@@ -8,16 +8,18 @@ const endpoints = {
   latest: `/api/?limit=${limit}`,
 };
 
+const request = requestFactory();
+
 export const getAll = async () => {
-  return await get(endpoints.data);
+  return await request.get(endpoints.data);
 };
 
 export const getById = async (gameId) => {
-  return await get(endpoints.details + gameId);
+  return await request.get(endpoints.details + gameId);
 };
 
 export async function getLatestsGames() {
-  const result = await get(endpoints.latest);
+  const result = await request.get(endpoints.latest);
   console.log(result);
   return result;
 }
