@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../contexts/AuthContext";
 import styles from "./Header.module.css";
 
 export default function Header() {
+  const { isAuthenticated } = useAuthContext(); 
   return (
     <header className={styles.header}>
       {/* <!-- Site Logo --> */}
@@ -24,17 +26,21 @@ export default function Header() {
           </div>
 
           {/* <!-- Logged users --> */}
+          {isAuthenticated && 
           <div className={styles["user-links"]}>
             <li><Link to={"/create-product"}>Create Publication</Link></li>
             <li><Link to={"/auth/profile"}>Profile</Link></li>
             <li><Link to={"/auth/logout"}>Logout</Link></li>
           </div>
+          }
 
           {/* <!-- Guest users --> */}
+          {!isAuthenticated && 
           <div className={styles["guest-links"]}>
             <li><Link to={"/auth/login"}>Login</Link></li>
             <li><Link to={"/auth/register"}>Register</Link></li>
           </div>
+          }
 
         </ul>
       </nav>
