@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 import InfoMessage from "./components/Shared/InfoMessage/InfoMessage";
@@ -16,6 +16,7 @@ import Footer from "./components/Footer/Footer";
 
 import * as gameService from "./services/gameService";
 import { Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   const [games, setGames] = useState([]);
@@ -25,12 +26,12 @@ function App() {
 
   useEffect(() => {
     gameService
-    // TODO see how to load separately
+      // TODO see how to load separately
       // .getLatestsGames()
       .getAll()
       .then((result) => {
         setGames(result);
-        console.log(result);
+        // console.log(result);
       })
       .catch((err) => {
         console.error(err.message);
@@ -39,7 +40,7 @@ function App() {
   }, []);
 
   return (
-    <Fragment>
+    <AuthProvider>
       {/* In case of Error or Success */}
       <InfoMessage />
 
@@ -47,25 +48,20 @@ function App() {
 
       <main>
         <Routes>
-
-          <Route path="/" element={<HomePage games={games}/>} />
+          <Route path="/" element={<HomePage games={games} />} />
           <Route path="/catalog" element={<Catalog games={games} />} />
-
           <Route path="/catalog/:gameId" element={<Details />} />
           <Route path="/create-product" element={<Create />} />
-
           <Route path="/edit" element={<Edit />} />
-
           <Route path="/auth/register" element={<Register />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/profile" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
-
         </Routes>
       </main>
 
       <Footer />
-    </Fragment>
+    </AuthProvider>
   );
 }
 
