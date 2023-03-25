@@ -14,7 +14,7 @@ authController.post("/register",
       if (errors.length > 0) {
         throw errors;
       }
-      if (req.body.password != req.body.rePassword) {
+      if (req.body.password != req.body.repass) {
         throw new Error("Passwords don't match!");
       }
 
