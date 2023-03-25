@@ -10,6 +10,7 @@ import Create from "./components/Create/Create";
 import Edit from "./components/Edit/Edit";
 import Register from "./components/Auth/Register/Register";
 import Login from "./components/Auth/Login/Login";
+import Logout from "./components/Auth/Logout/Logout";
 import Profile from "./components/Auth/Profile/Profile";
 import NotFound from "./components/NotFound/NotFound";
 import Footer from "./components/Footer/Footer";
@@ -55,6 +56,7 @@ function App() {
           <Route path="/edit" element={<Edit />} />
           <Route path="/auth/register" element={<Register />} />
           <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/logout" element={<Logout />} />
           <Route path="/auth/profile" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

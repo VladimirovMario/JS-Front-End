@@ -29,15 +29,21 @@ export const AuthProvider = ({ children }) => {
       }
       const result = await authService.register(data);
       setAuth(result);
-      navigate("/catalog");      
+      navigate("/catalog");
     } catch (error) {
       alert(error.message);
     }
   };
 
+  const onLogout = () => {
+    authService.logout();
+    setAuth({});
+  };
+
   const contextValues = {
     onLoginSubmit,
     onRegisterSubmit,
+    onLogout,
     userId: auth._id,
     userEmail: auth.email,
     userUsername: auth.username,
