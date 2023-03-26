@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { textSubstring } from "../../utils/textSubstring";
 import styles from "./ProductPs4.module.css";
 
 export default function ProductPs4({
@@ -11,8 +12,8 @@ export default function ProductPs4({
   price,
 }) {
   const navigate = useNavigate();
-
-  const onClickTest = (e) => {
+ 
+  const onClickAddFavorite = (e) => {
     e.preventDefault();
     // TODO navigate in case if not already liked, else display a message
     navigate("/auth/profile");
@@ -32,12 +33,9 @@ export default function ProductPs4({
             />
           </div>
           <div className={styles["content"]}>
-            <h2 className={styles["content-title"]}>{title}</h2>
-            <p className={styles["content-genre"]}>Genre: {genre}</p>
-            <p className={styles["content-desc"]}>{`${description?.substring(
-              0,
-              25
-            )}...`}</p>
+            <h2 className={styles["content-title"]}>{textSubstring(title, 28)}</h2>
+            <p className={styles["content-genre"]}>Genre: {textSubstring(genre, 20)}</p>
+            <p className={styles["content-desc"]}>{textSubstring(description, 25)}</p>
 
             <div className={styles["icon-wrapper"]}>
               <p className={styles["content-price"]}>{price}$</p>
@@ -46,9 +44,7 @@ export default function ProductPs4({
                 {/* <!-- User only --> */}
                 <span
                   className={`${styles["heart-icon"]} btn`}
-                  onClick={(e) => (onClickTest(e),
-                     console.log("second")
-                     )}
+                  onClick={(e) => onClickAddFavorite(e)}
                 >
                   <i className="fa-regular fa-heart"></i>
                 </span>
