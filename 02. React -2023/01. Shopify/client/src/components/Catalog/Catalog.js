@@ -1,7 +1,10 @@
 import styles from "./Catalog.module.css";
 import ProductPs4 from "../ProductPs4/ProductPs4";
+import { useGameContext } from "../../contexts/GameContext";
 
-export default function Catalog({ games }) {
+export default function Catalog() {
+  const { games } = useGameContext();
+
   return (
     <section className="section">
       <h2 className="section-title">Games for ps4</h2>
