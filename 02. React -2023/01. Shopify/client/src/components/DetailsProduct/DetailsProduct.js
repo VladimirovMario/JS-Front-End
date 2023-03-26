@@ -20,7 +20,7 @@ export default function DetailsProduct() {
         <img
           className={styles["details-card-image"]}
           src={game.imageUrl}
-          alt={`${game.title}.image`}
+          alt={`${game.title}.png`}
         />
       </div>
       <article className={styles["card-content"]}>
