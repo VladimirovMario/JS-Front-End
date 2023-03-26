@@ -1,16 +1,23 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getAllGames, getLatestsGames } from "../services/gameService";
-// import { useAuthContext } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
+import {
+  gameServiceFactory,
+  getAllGames,
+  getLatestsGames,
+} from "../services/gameService";
+
+import { useAuthContext } from "./AuthContext";
 
 export const GameContext = createContext(null);
 
 export const GameProvider = ({ children }) => {
   const [games, setGames] = useState([]);
   const [latestGames, setLatestGames] = useState([]);
-  const limit = 3;
+  const navigate = useNavigate();
+  const { token } = useAuthContext();
 
-  //   const { token } = useAuthContext();
-  //   console.log(token);
+  const gameService = gameServiceFactory(token);
+  const limit = 3;
 
   useEffect(() => {
     Promise.all([getAllGames(), getLatestsGames(limit)])
@@ -23,9 +30,24 @@ export const GameProvider = ({ children }) => {
       });
   }, []);
 
+  // TODO extract the handlers
+  const onCreateSubmit = async (data) => {
+    let { title, genre, price, imageUrl, description } = data;
+    price = Number(price);
+    try {
+      const newGame = await gameService.createGame({ title, genre, price, imageUrl, description });
+      setGames((state) => [...state, newGame]);
+      setLatestGames([newGame, ...latestGames.slice(0, limit - 1)]);
+      navigate("/");
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   const contextValues = {
     games,
     latestGames,
+    onCreateSubmit,
   };
 
   return (
