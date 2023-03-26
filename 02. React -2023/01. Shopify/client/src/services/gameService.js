@@ -1,25 +1,30 @@
 import { requestFactory } from "./requester";
 
-const limit = 3;
 
 const endpoints = {
-  data: "/api/game",
+  allGames: "/api/game",
   details: "/api/game/",
-  latest: `/api/?limit=${limit}`,
+  latest: (limit)=> `/api/?limit=${limit}`,
 };
 
 const request = requestFactory();
 
-export const getAll = async () => {
-  return await request.get(endpoints.data);
+export const getAllGames = async () => {
+  return await request.get(endpoints.allGames);
 };
 
-export const getById = async (gameId) => {
-  return await request.get(endpoints.details + gameId);
-};
-
-export async function getLatestsGames() {
-  const result = await request.get(endpoints.latest);
+export const getLatestsGames = async (limit) => {
+  const result = await request.get(endpoints.latest(limit));
   console.log(result);
   return result;
-}
+};
+
+export const gameServiceFactory = () => {
+  const getById = async (gameId) => {
+    return await request.get(endpoints.details + gameId);
+  };
+
+  return {
+    getById,
+  };
+};
