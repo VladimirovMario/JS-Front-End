@@ -35,10 +35,25 @@ export const GameProvider = ({ children }) => {
     let { title, genre, price, imageUrl, description } = data;
     price = Number(price);
     try {
-      const newGame = await gameService.createGame({ title, genre, price, imageUrl, description });
+      const newGame = await gameService.createGame({title, genre, price, imageUrl, description});
       setGames((state) => [...state, newGame]);
       setLatestGames([newGame, ...latestGames.slice(0, limit - 1)]);
       navigate("/");
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const onEditSubmit = async (data) => {
+    let { title, genre, price, imageUrl, description } = data;
+    price = Number(price);
+    const id = data._id;
+    try {
+      const updatedGame = await gameService.editGame(id, {title, genre, price, imageUrl, description});
+      const updatedState = (state) => state.map((game) => (game._id === id ? updatedGame : game));
+      setGames(updatedState);
+      setLatestGames(updatedState);
+      navigate(`/catalog/${id}`);
     } catch (error) {
       alert(error.message);
     }
@@ -48,6 +63,7 @@ export const GameProvider = ({ children }) => {
     games,
     latestGames,
     onCreateSubmit,
+    onEditSubmit,
   };
 
   return (
