@@ -45,7 +45,7 @@ export default function DetailsProduct() {
         {/* <!-- If there is no registered user, do not display buttons--> */}
         <div className={styles["buttons-wrapper"]}>
           <Link to={`/edit/${gameId}`} className={`btn-edit btn`}>Edit</Link>
-          <button className={"btn-delete btn"}>Delete</button>
+          <Link to={`/delete/${gameId}`} className={"btn-delete btn"}>Delete</Link>
           <Link className={"btn-comments btn"} href="/comments">Comments</Link>
         </div>
         
