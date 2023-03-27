@@ -4,6 +4,7 @@ const endpoints = {
   allGames: "/api/game",
   createGame: "/api/game",
   editGame: "/api/game/",
+  deleteGame: "/api/game/",
   details: "/api/game/",
   latest: (limit) => `/api/?limit=${limit}`,
 };
@@ -33,8 +34,13 @@ export const gameServiceFactory = (token) => {
     return await authorizedRequest.put(`${endpoints.editGame}/${id}`, data);
   };
 
+  const deleteGame = async (id) => {
+    return await authorizedRequest.delete(`${endpoints.deleteGame}/${id}`);    
+  }
+
   return {
     createGame,
     editGame,
+    deleteGame,
   };
 };
