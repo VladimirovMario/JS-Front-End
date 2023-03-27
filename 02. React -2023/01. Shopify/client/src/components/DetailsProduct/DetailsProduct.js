@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styles from "./DetailsProduct.module.css";
 import { getById } from "../../services/gameService";
 
@@ -44,14 +44,11 @@ export default function DetailsProduct() {
 
         {/* <!-- If there is no registered user, do not display buttons--> */}
         <div className={styles["buttons-wrapper"]}>
-          <a href="/edit/id" className={`btn-edit btn`}>
-            Edit
-          </a>
+          <Link to={`/edit/${gameId}`} className={`btn-edit btn`}>Edit</Link>
           <button className={"btn-delete btn"}>Delete</button>
-          <a className={"btn-comments btn"} href="/comments">
-            Comments
-          </a>
+          <Link className={"btn-comments btn"} href="/comments">Comments</Link>
         </div>
+        
       </article>
     </div>
   );
