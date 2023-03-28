@@ -35,7 +35,13 @@ export const GameProvider = ({ children }) => {
     let { title, genre, price, imageUrl, description } = data;
     price = Number(price);
     try {
-      const newGame = await gameService.createGame({title, genre, price, imageUrl, description});
+      const newGame = await gameService.createGame({
+        title,
+        genre,
+        price,
+        imageUrl,
+        description,
+      });
       setGames((state) => [...state, newGame]);
       setLatestGames([newGame, ...latestGames.slice(0, limit - 1)]);
       navigate("/");
@@ -49,8 +55,15 @@ export const GameProvider = ({ children }) => {
     price = Number(price);
     const id = data._id;
     try {
-      const updatedGame = await gameService.editGame(id, {title, genre, price, imageUrl, description});
-      const updatedState = (state) => state.map((game) => (game._id === id ? updatedGame : game));
+      const updatedGame = await gameService.editGame(id, {
+        title,
+        genre,
+        price,
+        imageUrl,
+        description,
+      });
+      const updatedState = (state) =>
+        state.map((game) => (game._id === id ? updatedGame : game));
       setGames(updatedState);
       setLatestGames(updatedState);
       navigate(`/catalog/${id}`);
@@ -63,13 +76,22 @@ export const GameProvider = ({ children }) => {
     const id = _id;
     try {
       const deletedGame = await gameService.deleteGame(id);
-      const updatedState = state => state.filter(game => game._id !== id);
+      const updatedState = (state) => state.filter((game) => game._id !== id);
       setGames(updatedState);
       setLatestGames(updatedState);
       console.log(latestGames);
-      // TODO: if(latestGames.length < limit - 1) add game in that place where was the deleted one! 
+      // TODO: if(latestGames.length < limit - 1) add game in that place where was the deleted one!
       navigate(`/catalog`);
       console.log(deletedGame);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const addGameToFavorites = async (gameId) => {
+    try {
+      // TODO the result is the whole game, so we can add game title to success message
+      await gameService.addGameToFavorites(gameId);
     } catch (error) {
       alert(error.message);
     }
@@ -81,6 +103,7 @@ export const GameProvider = ({ children }) => {
     onCreateSubmit,
     onEditSubmit,
     onDeleteSubmit,
+    addGameToFavorites,
   };
 
   return (
