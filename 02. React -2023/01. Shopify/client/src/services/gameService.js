@@ -6,6 +6,7 @@ const endpoints = {
   editGame: "/api/game/",
   deleteGame: "/api/game/",
   details: "/api/game/",
+  favorites: "/api/game/favorites",
   latest: (limit) => `/api/?limit=${limit}`,
 };
 
@@ -38,9 +39,14 @@ export const gameServiceFactory = (token) => {
     return await authorizedRequest.delete(`${endpoints.deleteGame}/${id}`);    
   }
 
+  const addGameToFavorites = async (gameId) => {
+    return await authorizedRequest.post(`${endpoints.favorites}/${gameId}`);
+  }
+
   return {
     createGame,
     editGame,
     deleteGame,
+    addGameToFavorites,
   };
 };
