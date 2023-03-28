@@ -9,7 +9,7 @@ async function createGame(game) {
 }
 
 async function getById(id) {
-  // TODO fix the problem with invalid ID's 
+  // TODO fix the problem with invalid ID's
   return Game.findById(id);
 }
 
@@ -35,11 +35,10 @@ async function getLatestsGames(limit) {
 async function addGameToFavorites(gameId, userId) {
   const game = await Game.findById(gameId);
 
-  if (game.users.includes(userId)) {
-    throw new Error("Cannot like twice");
+  if (game.users.includes(userId) == false) {
+    game.users.push(userId);
   }
-  game.users.push(userId);
-  await game.save();
+  return game.save();
 }
 
 async function getUserFavorites(userId) {
