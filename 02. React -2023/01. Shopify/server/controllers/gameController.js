@@ -80,17 +80,17 @@ gameController.delete("/:id", hasUser(), async (req, res) => {
   }
 });
 
-gameController.post("/liked/:gameId", async (req, res) => {
+gameController.post("/favorites/:gameId", hasUser(), async (req, res) => {
   try {
-    const item = await addGameToFavorites(req.params.gameId, req.user._id);
-    res.json(item);
+     const item = await addGameToFavorites(req.params.gameId, req.user._id);
+     res.json(item);
   } catch (err) {
     const message = parseError(err);
     res.status(400).json({ message });
   }
 });
 
-gameController.get("/liked/:userId", async (req, res) => {
+gameController.get("/favorites/:userId", async (req, res) => {
   try {
     const item = await getUserFavorites(req.user._id);
     res.json(item);
