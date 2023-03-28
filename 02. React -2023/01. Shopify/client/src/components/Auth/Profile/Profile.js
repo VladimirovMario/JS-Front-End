@@ -1,7 +1,24 @@
+import { useEffect, useState } from "react";
+import { useAuthContext } from "../../../contexts/AuthContext";
+import { getUserFavorites } from "../../../services/gameService";
 import styles from "./Profile.module.css";
+import { ProfileProducts } from "./ProfileProducts/ProfileProducts";
 
 // TODO fix the hole profile
 export default function Profile() {
+  const { userId, userEmail, userUsername } = useAuthContext();
+  const [favoriteGames, setFavoriteGames] = useState([]);
+
+  useEffect(() => {
+    getUserFavorites(userId)
+      .then((res) => {
+        setFavoriteGames(res);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }, [userId, favoriteGames.length]);
+
   return (
     <section className="section">
       <h2 className="section-title">Full Profile Information</h2>
@@ -9,17 +26,25 @@ export default function Profile() {
 
       <article className={`${styles["profile-card"]} action-container`}>
         <article className={styles["profile-card-info"]}>
-          <h2>Username: Peter</h2>
-          <h3>Email: Peter@abv.bg</h3>
+          <h2>Welcome, {userUsername}!</h2>
+          <h3>Email: {userEmail}</h3>
           {/* <!--If the user has shared publications, separate their titles with a comma and a space (, )--> */}
-          <h4>Titles of shared posts by the user: </h4>
+          {/* <h4>Titles of shared posts by the user: </h4> */}
           {/* <!--If not display:--> */}
           {/* <!--<h4>Titles of shared posts by the user: Not yet.</h4>--> */}
 
           {/* <!--If the user has created their own publications, separate their titles with a comma and a space (, )--> */}
-          <h4>Titles of which the user is the author:</h4>
+          {/* <h4>Titles of which the user is the author:</h4> */}
           {/* <!--If not display:--> */}
           {/* <!--<h4>Titles of which the user is the author: Not yet.</h4>--> */}
+
+          {(!favoriteGames.length && (
+            <h4>You don't have favorite products yet!</h4>
+          )) || <h4>Favorite products list: {favoriteGames.length}</h4>}
+
+          {favoriteGames.map((game) => (
+            <p key={game._id}>{game.title}, </p>
+          ))}
         </article>
 
         <div className={styles["profile-card-icon"]}>
@@ -29,30 +54,9 @@ export default function Profile() {
 
       <div className={styles["product-wrapper"]}>
         <ul className={styles["product-ul"]}>
-          <li>
-            <article className={styles["card"]}>
-              <div className={styles["thumbnail"]}>
-                <img
-                  className={styles["thumbnail-img"]}
-                  src="http://localhost:3000/static/images/ps4/grand-theft-auto-v.jpg"
-                  alt="Unsplash img"
-                />
-              </div>
-
-              <div className={styles["content"]}>
-                <h3 className={styles["content-title"]}>Grand Theft Auto V</h3>
-                <div className={styles["icon-wrapper"]}>
-                  <p className={styles["content-price"]}>30$</p>
-
-                  <div className={styles["icon-btn"]}>
-                    <button className={`${styles["shopping-icon"]} btn`}>
-                      <i className="fa-solid fa-cart-shopping"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </li>
+          {favoriteGames.map((game) => (
+            <ProfileProducts key={game._id} {...game} />
+          ))}
         </ul>
       </div>
     </section>
