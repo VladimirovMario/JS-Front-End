@@ -91,8 +91,11 @@ gameController.post("/favorites/:gameId", hasUser(), async (req, res) => {
 });
 
 gameController.get("/favorites/:userId", async (req, res) => {
+  // TODO make an authorized request with "hasUser()" guard and use req.user._id
+  // After fixing the "client" authorization
   try {
-    const item = await getUserFavorites(req.user._id);
+    // const item = await getUserFavorites(req.user._id);
+    const item = await getUserFavorites(req.params.userId);
     res.json(item);
   } catch (err) {
     const message = parseError(err);
