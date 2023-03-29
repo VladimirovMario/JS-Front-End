@@ -14,6 +14,7 @@ const trimBody = require("./middlewares/trimBody");
 const session = require("./middlewares/session");
 const gameController = require("./controllers/gameController");
 const homeController = require("./controllers/homeController");
+const commentController = require("./controllers/commentController");
 
 const connectionString = "mongodb://0.0.0.0:27017/exam-prep-3";
 start();
@@ -51,6 +52,7 @@ async function start() {
   app.use("/api/user", authController);
   app.use("/api/game", gameController);
   app.use("/api/catalog", dataController);
+  app.use("/api/comments" , commentController);
 
   const port = 3030;
   app.listen(port, () => 
