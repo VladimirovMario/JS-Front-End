@@ -10,7 +10,7 @@ import { AddComment } from "./AddComment/AddComment";
 
 export const GameDetails = ({ onDeleteClickHandler }) => {
   const { gameId } = useParams();
-  const { userId, isAuthenticated } = useAuthContext();
+  const { userId, isAuthenticated, userEmail } = useAuthContext();
   const [game, setGame] = useState({});
 
   const gameService = useService(gameServiceFactory);
@@ -19,34 +19,37 @@ export const GameDetails = ({ onDeleteClickHandler }) => {
   const isOwner = userId === game._ownerId;
 
   useEffect(() => {
-    gameService
-      .getOne(gameId)
-      .then((data) => {
-        setGame(data);
-        // return commentService.getCurrGameComments(gameId);
-      })
-      .then((result) => {
-        // setComments(result);
+    Promise.all([
+      gameService.getOne(gameId),
+      commentService.getCurrGameComments(gameId),
+    ]).then(([gameData, comments]) => {
+      // console.log(gameData, comments);
+      setGame({
+        ...gameData,
+        comments,
       });
+    });
   }, [gameId]);
-
 
   const onCommentsSubmit = async (values) => {
     const result = await commentService.create(gameId, values.comment);
-    // { _ownerId: "", gameId: "", comment: "some text", _createdOn: 1679678148638, _id: "" }
-    console.log(result)
-    // setGame((state) => ({
-    //   ...state,
-    //   comments: { ...state.comments, [result._id]: result },
-    // }));
- 
+    setGame((state) => ({
+      ...state,
+      comments: [
+        ...state.comments,
+        {
+          ...result,
+          author: {
+           email: userEmail,
+          },
+        },
+      ],
+    }));
   };
 
   const onDeleteClick = async () => {
-    // react-confirm
     await gameService.delete(gameId);
     onDeleteClickHandler(gameId);
-
     navigate("/catalog");
   };
 
@@ -63,21 +66,20 @@ export const GameDetails = ({ onDeleteClickHandler }) => {
         <p className="text">{game.summary}</p>
 
         {/* <!-- Bonus ( for Guests and Users ) --> */}
-        {/* <div className="details-comments">
+        <div className="details-comments">
           <h2>Comments:</h2>
           <ul>
-        
-            {comments.map((c) => (
-              <li key={c._id} className="comment">
-                <p>
-                  {c.username}: {c.comment}
-                </p>
-              </li>
-            ))}
+            {game.comments &&
+              game.comments.map((c) => (
+                <li key={c._id} className="comment">
+                  <p>
+                    {c.author?.email}: {c.comment}
+                  </p>
+                </li>
+              ))}
           </ul>
-   
-          {!comments.length && <p className="no-comment">No comments.</p>}
-        </div> */}
+          {!game.comments?.length && <p className="no-comment">No comments.</p>}
+        </div>
 
         {/* <!-- Edit/Delete buttons ( Only for creator of this game )  --> */}
         {isOwner && (
@@ -91,7 +93,9 @@ export const GameDetails = ({ onDeleteClickHandler }) => {
           </div>
         )}
 
-        {!isOwner && isAuthenticated && <AddComment onCommentsSubmit={onCommentsSubmit} />}
+        {!isOwner && isAuthenticated && (
+          <AddComment onCommentsSubmit={onCommentsSubmit} />
+        )}
       </div>
     </section>
   );

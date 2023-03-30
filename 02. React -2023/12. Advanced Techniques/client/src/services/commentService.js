@@ -8,8 +8,10 @@ const baseUrl = "http://localhost:3030/data/comments";
 // GET /games/comments?where=gameId%3D%22401853c9-059f-4d1c-82a8-b1e95377b62c%22
 
 export const getCurrGameComments = async (gameId) => {
-  const query = encodeURIComponent(`gameId="${gameId}"`);
-  const result = await request.get(`${baseUrl}?where=${query}`);
+  const searchQuery = encodeURIComponent(`gameId="${gameId}"`);
+  const relationQuery = encodeURIComponent(`author=_ownerId:users`);
+
+  const result = await request.get(`${baseUrl}?where=${searchQuery}&load=${relationQuery}`);
 
   const comments = Object.values(result);
   return comments;
