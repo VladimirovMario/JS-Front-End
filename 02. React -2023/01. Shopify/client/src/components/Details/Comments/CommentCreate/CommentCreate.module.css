@@ -1,0 +1,44 @@
+.create-comment {
+  max-width: calc(100% - 2 * 100px);
+  margin: 0 auto;
+  margin-bottom: 64px;
+  background-color: var(--clr-white);
+  border-radius: 6px;
+  box-shadow: -2px -1px 12px 1px var(--clr-pirate-gold);
+  padding: 32px;
+  min-height: 50vh;
+}
+
+.form-wrapper {
+  margin: 0 auto;
+  max-width: 60%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.input-title {
+  font-size: 23px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.input-subject {
+  width: 80%;
+}
+
+.message {
+  resize: none;
+  width: 100%;
+}
+
+.message,
+.input-subject {
+  background-color: transparent;
+  border: 1px solid var(--clr-abbey);
+  border-radius: 6px;
+  padding: 8px;
+}

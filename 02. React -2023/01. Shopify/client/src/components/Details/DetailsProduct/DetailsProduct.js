@@ -1,19 +1,7 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./DetailsProduct.module.css";
-import { getById } from "../../services/gameService";
 
-export default function DetailsProduct() {
-  const { gameId } = useParams();
-  const [game, setGame] = useState({});
-
-  useEffect(() => {
-    getById(gameId).then((res) => {
-      setGame(res);
-      // console.log(`from details `, res);
-    });
-  }, [gameId]);
-
+export default function DetailsProduct({ game }) {
   return (
     <div className={styles["details-card"]}>
       <div className={styles["details-image-wrapper"]}>
@@ -44,11 +32,16 @@ export default function DetailsProduct() {
 
         {/* <!-- If there is no registered user, do not display buttons--> */}
         <div className={styles["buttons-wrapper"]}>
-          <Link to={`/edit/${gameId}`} className={`btn-edit btn`}>Edit</Link>
-          <Link to={`/delete/${gameId}`} className={"btn-delete btn"}>Delete</Link>
-          <Link className={"btn-comments btn"} href="/comments">Comments</Link>
+          <Link to={`/edit/${game._id}`} className={`btn-edit btn`}>
+            Edit
+          </Link>
+          <Link to={`/delete/${game._id}`} className={"btn-delete btn"}>
+            Delete
+          </Link>
+          <Link className={"btn-comments btn"} to="/create-comment">
+            Comments
+          </Link>
         </div>
-        
       </article>
     </div>
   );

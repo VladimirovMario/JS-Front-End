@@ -6,6 +6,7 @@ import Details from "./components/Details/Details";
 import Create from "./components/Create/Create";
 import Edit from "./components/Edit/Edit";
 import DeleteProduct from "./components/DeleteProduct/DeleteProduct";
+import CommentCreate from "./components/Details/Comments/CommentCreate/CommentCreate";
 import Register from "./components/Auth/Register/Register";
 import Login from "./components/Auth/Login/Login";
 import Logout from "./components/Auth/Logout/Logout";
@@ -39,6 +40,7 @@ function App() {
             <Route path="/create-product" element={<Create />} />
             <Route path="/edit/:gameId" element={<Edit />} />
             <Route path="/delete/:gameId" element={<DeleteProduct />} />
+            <Route path="/create-comment" element={<CommentCreate/>} />           
             <Route path="/auth/profile" element={<Profile />} />
             <Route path="/auth/register" element={<Register />} />
             <Route path="/auth/login" element={<Login />} />

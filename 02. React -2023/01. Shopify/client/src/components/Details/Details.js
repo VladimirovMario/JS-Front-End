@@ -1,20 +1,37 @@
-import DetailsCommentsList from '../DetailsCommentsList/DetailsCommentsList';
-import DetailsProduct from '../DetailsProduct/DetailsProduct';
-import styles from './Details.module.css'
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-export default function Details () {
-    return (
-        <section id="details" className={`${styles["details"]} section`}>
-        <h2 className="section-title">Details</h2>
-        <div className="section-divider"></div>
+import CommentsList from "./Comments/CommentsList/CommentsList";
+import DetailsProduct from "./DetailsProduct/DetailsProduct";
 
-        {/* DetailsCard component*/}
-        <DetailsProduct />
+import styles from "./Details.module.css";
+import { getById } from "../../services/gameService";
+import { getCommentsById } from "../../services/commentService";
 
-        {/* <!-- details-comments --> */}
-        <DetailsCommentsList />
+export default function Details() {
+  const { gameId } = useParams();
+  const [game, setGame] = useState({});
 
+  useEffect(() => {
+    Promise.all([getById(gameId), getCommentsById(gameId)]).then(
+      ([gameData, comments]) => {
+        setGame({
+          ...gameData,
+          comments,
+        });
+      }
+    );
+  }, [gameId]);
+
+  return (
+    <section id="details" className={`${styles["details"]} section`}>
+      <h2 className="section-title">Details</h2>
+      <div className="section-divider"></div>
+ 
+      <DetailsProduct game={game} />
+
+      <CommentsList comments={game?.comments} />
 
     </section>
-    );
+  );
 }
