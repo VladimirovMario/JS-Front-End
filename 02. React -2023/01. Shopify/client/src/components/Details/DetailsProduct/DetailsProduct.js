@@ -1,7 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../../contexts/AuthContext";
+import { useGameContext } from "../../../contexts/GameContext";
 import styles from "./DetailsProduct.module.css";
 
 export default function DetailsProduct({ game }) {
+
+  const { userId, isAuthenticated } = useAuthContext();
+  const { addGameToFavorites } = useGameContext();
+  const navigate = useNavigate();
+
+  const onClickAddFavorite = async (e) => {
+    e.preventDefault(); 
+    // Checking if the user already add this game to his favorites
+    if (game.users.includes(userId) === false) {
+      addGameToFavorites(game._id);
+    }
+    // navigate in every case
+    // TODO Implement a message of success and stay on current page and browse for more
+    navigate("/auth/profile");
+  };
+
   return (
     <div className={styles["details-card"]}>
       <div className={styles["details-image-wrapper"]}>
@@ -20,10 +38,13 @@ export default function DetailsProduct({ game }) {
         <div className={styles["icon-wrapper"]}>
           <p className={styles["content-price"]}>{game.price}$</p>
           <div className={"icon-btn"}>
+
             {/* <!-- User only --> */}
-            <button className={`${styles["heart-icon"]} btn`}>
+            {isAuthenticated && 
+            <button onClick={onClickAddFavorite} className={`${styles["heart-icon"]} btn`}>
               <i className="fa-regular fa-heart"></i>
             </button>
+            }
             <button className={`${styles["shopping-icon"]} btn`}>
               <i className="fa-solid fa-cart-shopping"></i>
             </button>
