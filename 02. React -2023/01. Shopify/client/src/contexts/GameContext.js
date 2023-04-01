@@ -5,6 +5,7 @@ import {
   getAllGames,
   getLatestsGames,
 } from "../services/gameService";
+import { commentServiceFactory } from "../services/commentService";
 
 import { useAuthContext } from "./AuthContext";
 
@@ -17,6 +18,7 @@ export const GameProvider = ({ children }) => {
   const { token } = useAuthContext();
 
   const gameService = gameServiceFactory(token);
+  const commentService = commentServiceFactory(token);
   const limit = 3;
 
   useEffect(() => {
@@ -97,6 +99,20 @@ export const GameProvider = ({ children }) => {
     }
   };
 
+  // Comments functionality
+  const createComment = async (gameId, commentsData) => {
+    const { subject, content } = commentsData;
+    try {
+      const result = await commentService.createComment(gameId, {
+        subject,
+        content,
+      });
+      return result;
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   const contextValues = {
     games,
     latestGames,
@@ -104,6 +120,7 @@ export const GameProvider = ({ children }) => {
     onEditSubmit,
     onDeleteSubmit,
     addGameToFavorites,
+    createComment,
   };
 
   return (
