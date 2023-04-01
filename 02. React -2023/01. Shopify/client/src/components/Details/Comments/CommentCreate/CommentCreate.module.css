@@ -7,11 +7,27 @@
   box-shadow: -2px -1px 12px 1px var(--clr-pirate-gold);
   padding: 32px;
   min-height: 50vh;
+
+  display: flex;
+  gap: 32px;
+}
+
+.game-wrapper {
+  max-width: 20%;
+}
+
+.game-title {
+  color: var(--clr-abbey);
+  margin-bottom: 24px;
+}
+
+.image-wrapper {
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .form-wrapper {
-  margin: 0 auto;
-  max-width: 60%;
+  width: 80%;
 }
 
 .form {
