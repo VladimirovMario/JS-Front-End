@@ -21,7 +21,9 @@ export default function Details() {
         });
       }
     );
-  }, [gameId]);
+    // TODO optimize it 
+    // I have to think how to change the state without re render.
+  }, [gameId, game.comments?.length]);
 
   return (
     <section id="details" className={`${styles["details"]} section`}>
