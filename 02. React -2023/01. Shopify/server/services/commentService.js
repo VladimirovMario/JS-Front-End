@@ -1,4 +1,5 @@
 const Comment = require("../models/Comment");
+const User = require("../models/User");
 
 async function getAll(gameId) {
   return Comment.find({ gameId: gameId });
@@ -9,7 +10,10 @@ async function getAll(gameId) {
 }
 
 async function createComment(gameId, userId, { subject, content }) {
+  const { email, username } = await User.findById(userId); 
+
   const comment = Comment.create({
+    author: { email, username },
     subject,
     content,
     gameId,
