@@ -59,7 +59,7 @@ export default function DetailsProduct({ game }) {
           <Link to={`/delete/${game._id}`} className={"btn-delete btn"}>
             Delete
           </Link>
-          <Link className={"btn-comments btn"} to="/create-comment">
+          <Link className={"btn-comments btn"} to={`/create-comment/${game._id}`}>
             Comments
           </Link>
         </div>

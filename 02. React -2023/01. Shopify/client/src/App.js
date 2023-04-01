@@ -40,7 +40,7 @@ function App() {
             <Route path="/create-product" element={<Create />} />
             <Route path="/edit/:gameId" element={<Edit />} />
             <Route path="/delete/:gameId" element={<DeleteProduct />} />
-            <Route path="/create-comment" element={<CommentCreate/>} />           
+            <Route path="/create-comment/:gameId" element={<CommentCreate/>} />           
             <Route path="/auth/profile" element={<Profile />} />
             <Route path="/auth/register" element={<Register />} />
             <Route path="/auth/login" element={<Login />} />
