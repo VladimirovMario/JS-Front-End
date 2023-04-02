@@ -4,7 +4,7 @@ import styles from "./Create.module.css";
 
 export default function Create() {
   const { onCreateSubmit } = useGameContext();
-  const { values, onChangeHandler, onSubmit } = useForm(
+  const { values, errors, onChangeHandler, onSubmit, onValidateForm } = useForm(
     {
       title: "",
       genre: "",
@@ -39,7 +39,16 @@ export default function Create() {
           <div className={styles["input-wrapper"]}>
             <div className={styles["rows-aligned"]}>
               <label className={styles["vertical"]} htmlFor="title">
-                <span>Title</span>
+                <div className={styles["input-label"]}>
+                  <span>
+                    Title
+                    {errors && (
+                      <span className={styles["error-message"]}>
+                        &nbsp;{errors.title}
+                      </span>
+                    )}
+                  </span>
+                </div>
                 <input
                   className={styles["input-title"]}
                   type="text"
@@ -48,10 +57,20 @@ export default function Create() {
                   name="title"
                   value={values.title}
                   onChange={onChangeHandler}
+                  onBlur={onValidateForm}
                 />
               </label>
               <label htmlFor="genre">
-                <span>Genre</span>
+                <div className={styles["input-label"]}>
+                  <span>
+                    Genre
+                    {errors && (
+                      <span className={styles["error-message"]}>
+                        &nbsp;{errors.genre}
+                      </span>
+                    )}
+                  </span>
+                </div>
                 <input
                   className={styles["input-genre"]}
                   type="text"
@@ -60,10 +79,20 @@ export default function Create() {
                   name="genre"
                   value={values.genre}
                   onChange={onChangeHandler}
+                  onBlur={onValidateForm}
                 />
               </label>
               <label htmlFor="price">
-                <span>Price</span>
+                <div className={styles["input-label"]}>
+                  <span>
+                    Price
+                    {errors && (
+                      <span className={styles["error-message"]}>
+                        &nbsp;{errors.price}
+                      </span>
+                    )}
+                  </span>
+                </div>
                 <input
                   className={styles["input-price"]}
                   type="number"
@@ -71,10 +100,20 @@ export default function Create() {
                   name="price"
                   value={values.price}
                   onChange={onChangeHandler}
+                  onBlur={onValidateForm}
                 />
               </label>
               <label htmlFor="imageUrl">
-                <span>Image Url</span>
+                <div className={styles["input-label"]}>
+                  <span>
+                    Image
+                    {errors && (
+                      <span className={styles["error-message"]}>
+                        &nbsp;{errors.imageUrl}
+                      </span>
+                    )}
+                  </span>
+                </div>
                 <input
                   className={styles["input-img-url"]}
                   type="text"
@@ -83,6 +122,7 @@ export default function Create() {
                   name="imageUrl"
                   value={values.imageUrl}
                   onChange={onChangeHandler}
+                  onBlur={onValidateForm}
                 />
               </label>
             </div>
@@ -90,7 +130,16 @@ export default function Create() {
             {/* <!-- text area --> */}
             <div className={styles["align-center"]}>
               <label htmlFor="description">
-                <span>Description</span>
+                <div className={styles["input-label"]}>
+                  <span>
+                    Description
+                    {errors && (
+                      <span className={styles["error-message"]}>
+                        &nbsp;{errors.description}
+                      </span>
+                    )}
+                  </span>
+                </div>
                 <textarea
                   className={styles["description"]}
                   cols="40"
@@ -99,6 +148,7 @@ export default function Create() {
                   name="description"
                   value={values.description}
                   onChange={onChangeHandler}
+                  onBlur={onValidateForm}
                 ></textarea>
               </label>
               <div className={styles["align-center-action"]}>
