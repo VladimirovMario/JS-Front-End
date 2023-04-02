@@ -45,7 +45,11 @@ export default function DeleteProduct() {
         </div>
 
         <form onSubmit={onSubmit} className={styles["form-container"]}>
-          <h3 className={`${styles["form-container-title"]} ${styles["delete-title"]}`}>Delete {values.title}</h3>
+          <h3
+            className={`${styles["form-container-title"]} ${styles["delete-title"]}`}
+          >
+            Delete {values.title}
+          </h3>
           <p className={styles["form-container-desc"]}>
             Are you sure you want to delete this "{values.title}" game?
           </p>
@@ -54,7 +58,9 @@ export default function DeleteProduct() {
           <div className={styles["input-wrapper"]}>
             <div className={styles["rows-aligned"]}>
               <label className={styles["vertical"]} htmlFor="title">
-                <span>Title</span>
+                <div className={styles["input-label"]}>
+                  <span>Title</span>
+                </div>
                 <input
                   className={styles["input-title"]}
                   type="text"
@@ -66,7 +72,9 @@ export default function DeleteProduct() {
                 />
               </label>
               <label htmlFor="genre">
-                <span>Genre</span>
+                <div className={styles["input-label"]}>
+                  <span>Genre</span>
+                </div>
                 <input
                   className={styles["input-genre"]}
                   type="text"
@@ -78,7 +86,9 @@ export default function DeleteProduct() {
                 />
               </label>
               <label htmlFor="price">
-                <span>Price</span>
+                <div className={styles["input-label"]}>
+                  <span>Price</span>
+                </div>
                 <input
                   className={styles["input-price"]}
                   type="number"
@@ -89,7 +99,9 @@ export default function DeleteProduct() {
                 />
               </label>
               <label htmlFor="imageUrl">
-                <span>Image Url</span>
+                <div className={styles["input-label"]}>
+                  <span>Image Url</span>
+                </div>
                 <input
                   className={styles["input-img-url"]}
                   type="text"
@@ -105,7 +117,9 @@ export default function DeleteProduct() {
             {/* <!-- text area --> */}
             <div className={styles["align-center"]}>
               <label htmlFor="description">
-                <span>Description</span>
+                <div className={styles["input-label"]}>
+                  <span>Description</span>
+                </div>
                 <textarea
                   className={styles["description"]}
                   cols="40"
