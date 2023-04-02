@@ -29,7 +29,7 @@
 .input-register,
 .input-login {
   margin: 0 auto;
-  max-width: 60%;
+  max-width: 80%;
 
   display: flex;
   flex-direction: column;

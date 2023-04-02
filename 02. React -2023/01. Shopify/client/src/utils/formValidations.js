@@ -1,14 +1,24 @@
 export const formValidations = (e) => {
   const errors = {};
-  const value = e.target.value;
   const target = e.target.name;
+  const value = e.target.value;
+  const emailRegex =
+    /(?<!\S)[A-Za-z]+(\.|-|_)?[A-Za-z]+@[A-Z-a-z]+\.[A-Z-a-z]+(\.[A-Z-a-z]*\.?)?\b/;
 
-  if (target === "email" && value === "") {
-    errors.email = "All fields are required!";
+  if (target === "email" && emailRegex.test(value) === false) {
+    errors.email = "must be valid address format!";
   }
 
-  if (target === "password" && value === "") {
-    errors.password = "All fields are required!";
+  if (target === "username" && value.length < 3) {
+    errors.username = "should be at least 3 characters long";
+  }
+
+  if (target === "password" && value.length < 3) {
+    errors.password = "should be at least 3 characters long";
+  }
+
+  if (target === "repass" && value === "") {
+    errors.repass = "don't match with password";
   }
 
   return errors;

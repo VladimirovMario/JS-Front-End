@@ -5,7 +5,7 @@ import styles from "./Register.module.css";
 export default function Register() {
   const { onRegisterSubmit } = useAuthContext();
 
-  const { values, onChangeHandler, onSubmit } = useForm(
+  const { values, errors, onChangeHandler, onSubmit, onValidateForm } = useForm(
     {
       email: "",
       username: "",
@@ -38,7 +38,14 @@ export default function Register() {
           {/* <!-- Inputs --> */}
           <div className={styles["input-register"]}>
             <label htmlFor="email">
-              <span>Email</span>
+              <span>
+                Email
+                {errors && (
+                  <span className={styles["error-message"]}>
+                    &nbsp;{errors.email}
+                  </span>
+                )}
+              </span>
               <input
                 className={styles["email"]}
                 type="email"
@@ -47,11 +54,19 @@ export default function Register() {
                 name="email"
                 value={values.email}
                 onChange={onChangeHandler}
+                onBlur={onValidateForm}
               />
             </label>
 
             <label htmlFor="username">
-              <span>Username</span>
+              <span>
+                Username
+                {errors && (
+                  <span className={styles["error-message"]}>
+                    &nbsp;{errors.username}
+                  </span>
+                )}
+              </span>
               <input
                 className={styles["username"]}
                 type="text"
@@ -60,6 +75,7 @@ export default function Register() {
                 name="username"
                 value={values.username}
                 onChange={onChangeHandler}
+                onBlur={onValidateForm}
               />
             </label>
 
@@ -77,7 +93,14 @@ export default function Register() {
             </label>
 
             <label htmlFor="password">
-              <span>Password</span>
+              <span>
+                Password
+                {errors && (
+                  <span className={styles["error-message"]}>
+                    &nbsp;{errors.password}
+                  </span>
+                )}
+              </span>
               <input
                 className={styles["password"]}
                 type="password"
@@ -86,11 +109,19 @@ export default function Register() {
                 name="password"
                 value={values.password}
                 onChange={onChangeHandler}
+                onBlur={onValidateForm}
               />
             </label>
 
             <label htmlFor="repass">
-              <span>Repeat</span>
+              <span>
+                Repeat
+                {errors && (
+                  <span className={styles["error-message"]}>
+                    &nbsp;{errors.repass}
+                  </span>
+                )}
+              </span>
               <input
                 className={styles["repass"]}
                 type="password"
@@ -99,6 +130,7 @@ export default function Register() {
                 name="repass"
                 value={values.repass}
                 onChange={onChangeHandler}
+                onBlur={onValidateForm}
               />
             </label>
 
