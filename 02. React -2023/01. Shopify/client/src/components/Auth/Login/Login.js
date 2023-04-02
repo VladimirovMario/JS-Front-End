@@ -6,7 +6,7 @@ import { useForm } from "../../../hooks/useForm";
 export default function Login() {
   const { onLoginSubmit } = useAuthContext();
 
-  const { values, onChangeHandler, onSubmit } = useForm(
+  const { values, errors, onChangeHandler, onSubmit, onValidateForm } = useForm(
     {
       email: "",
       password: "",
@@ -30,11 +30,18 @@ export default function Login() {
 
         <form onSubmit={onSubmit} className={styles["login-form"]}>
           <h3 className={styles["form-container-title"]}>Welcome back</h3>
+
           {/* <!-- Inputs --> */}
           <div className={styles["input-login"]}>
-
             <label htmlFor="email">
-              <span>Email</span>
+              <span>
+                Email
+                {errors && (
+                  <span className={styles["error-message"]}>
+                    &nbsp;{errors.email}
+                  </span>
+                )}
+              </span>
               <input
                 className={styles["email"]}
                 type="email"
@@ -43,11 +50,19 @@ export default function Login() {
                 name="email"
                 value={values.email}
                 onChange={onChangeHandler}
+                onBlur={onValidateForm}
               />
             </label>
 
             <label htmlFor="password">
-              <span>Password</span>
+              <span>
+                Password
+                {errors && (
+                  <span className={styles["error-message"]}>
+                    &nbsp;{errors.password}
+                  </span>
+                )}
+              </span>
               <input
                 className={styles["password"]}
                 type="password"
@@ -56,6 +71,7 @@ export default function Login() {
                 name="password"
                 value={values.password}
                 onChange={onChangeHandler}
+                onBlur={onValidateForm}
               />
             </label>
 
