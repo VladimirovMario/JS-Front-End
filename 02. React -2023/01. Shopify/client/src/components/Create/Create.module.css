@@ -42,7 +42,7 @@
   text-align: center;
 }
 
-.delete-title{
+.delete-title {
   color: var(--clr-danger);
 }
 
@@ -63,9 +63,13 @@
   gap: 12px;
 }
 
-.input-wrapper span {
+.input-label {
   display: block;
   font-size: 21px;
+}
+
+.error-message {
+  color: var(--clr-danger);
 }
 
 .input-title,
