@@ -1,13 +1,23 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useGameContext } from "../../contexts/GameContext";
+import { Link, useParams } from "react-router-dom";
+
 import { getById } from "../../services/gameService";
+import { useGameContext } from "../../contexts/GameContext";
+import { formValidations } from "../../utils/formValidations";
 import styles from "../Create/Create.module.css";
 
 export default function Edit() {
   const { gameId } = useParams();
   const { onEditSubmit } = useGameContext();
   const [values, setValues] = useState({
+    title: "",
+    genre: "",
+    price: "",
+    imageUrl: "",
+    description: "",
+  });
+
+  const [errors, setErrors] = useState({
     title: "",
     genre: "",
     price: "",
@@ -34,6 +44,11 @@ export default function Edit() {
     onEditSubmit(values);
   };
 
+  const onValidateForm = (e) => {
+    const error = formValidations(e);
+    setErrors(error);
+  };
+
   return (
     <section className="section">
       <h2 className="section-title">Edit product</h2>
@@ -41,17 +56,19 @@ export default function Edit() {
 
       <div className={"action-container"}>
         <div className={styles["edit-img-wrapper"]}>
-          <img
-            className={styles["create-edit-img"]}
-            src={"/static/images/edit-product.jpg"}
-            alt="edit-product.jpg"
-          />
+          <Link to={`/catalog/${gameId}`}>
+            <img
+              className={styles["create-edit-img"]}
+              src={values.imageUrl}
+              alt="edit-product.jpg"
+            />
+          </Link>
         </div>
 
         <form onSubmit={onSubmit} className={styles["form-container"]}>
-          <h3 className={styles["form-container-title"]}>Edit Publication</h3>
+          <h3 className={styles["form-container-title"]}>Create Publication</h3>
           <p className={styles["form-container-desc"]}>
-            Edit your own masterpiece!
+            Add your own masterpiece!
           </p>
 
           {/* <!-- Inputs --> */}
@@ -59,7 +76,14 @@ export default function Edit() {
             <div className={styles["rows-aligned"]}>
               <label className={styles["vertical"]} htmlFor="title">
                 <div className={styles["input-label"]}>
-                  <span>Title</span>
+                  <span>
+                    Title
+                    {errors && (
+                      <span className={styles["error-message"]}>
+                        &nbsp;{errors.title}
+                      </span>
+                    )}
+                  </span>
                 </div>
                 <input
                   className={styles["input-title"]}
@@ -69,11 +93,19 @@ export default function Edit() {
                   name="title"
                   value={values.title}
                   onChange={onChangeHandler}
+                  onBlur={onValidateForm}
                 />
               </label>
               <label htmlFor="genre">
                 <div className={styles["input-label"]}>
-                  <span>Genre</span>
+                  <span>
+                    Genre
+                    {errors && (
+                      <span className={styles["error-message"]}>
+                        &nbsp;{errors.genre}
+                      </span>
+                    )}
+                  </span>
                 </div>
                 <input
                   className={styles["input-genre"]}
@@ -83,11 +115,19 @@ export default function Edit() {
                   name="genre"
                   value={values.genre}
                   onChange={onChangeHandler}
+                  onBlur={onValidateForm}
                 />
               </label>
               <label htmlFor="price">
                 <div className={styles["input-label"]}>
-                  <span>Price</span>
+                  <span>
+                    Price
+                    {errors && (
+                      <span className={styles["error-message"]}>
+                        &nbsp;{errors.price}
+                      </span>
+                    )}
+                  </span>
                 </div>
                 <input
                   className={styles["input-price"]}
@@ -96,11 +136,19 @@ export default function Edit() {
                   name="price"
                   value={values.price}
                   onChange={onChangeHandler}
+                  onBlur={onValidateForm}
                 />
               </label>
               <label htmlFor="imageUrl">
                 <div className={styles["input-label"]}>
-                  <span>Image Url</span>
+                  <span>
+                    Image
+                    {errors && (
+                      <span className={styles["error-message"]}>
+                        &nbsp;{errors.imageUrl}
+                      </span>
+                    )}
+                  </span>
                 </div>
                 <input
                   className={styles["input-img-url"]}
@@ -110,6 +158,7 @@ export default function Edit() {
                   name="imageUrl"
                   value={values.imageUrl}
                   onChange={onChangeHandler}
+                  onBlur={onValidateForm}
                 />
               </label>
             </div>
@@ -118,7 +167,14 @@ export default function Edit() {
             <div className={styles["align-center"]}>
               <label htmlFor="description">
                 <div className={styles["input-label"]}>
-                  <span>Description</span>
+                  <span>
+                    Description
+                    {errors && (
+                      <span className={styles["error-message"]}>
+                        &nbsp;{errors.description}
+                      </span>
+                    )}
+                  </span>
                 </div>
                 <textarea
                   className={styles["description"]}
@@ -128,6 +184,7 @@ export default function Edit() {
                   name="description"
                   value={values.description}
                   onChange={onChangeHandler}
+                  onBlur={onValidateForm}
                 ></textarea>
               </label>
               <div className={styles["align-center-action"]}>
