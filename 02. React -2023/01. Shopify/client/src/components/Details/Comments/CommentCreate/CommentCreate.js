@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { getById } from "../../../../services/gameService";
 import { useGameContext } from "../../../../contexts/GameContext";
@@ -55,7 +55,9 @@ export default function CommentCreate() {
         <div className={styles["game-wrapper"]}>
           <h3 className={styles["game-title"]}>{game.title}</h3>
           <div className={styles["image-wrapper"]}>
-            <img src={game.imageUrl} alt={`${game.title}.jpg`} />
+            <Link to={`/catalog/${gameId}`}>
+              <img src={game.imageUrl} alt={`${game.title}.jpg`} />
+            </Link>
           </div>
         </div>
 
