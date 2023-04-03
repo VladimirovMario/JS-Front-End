@@ -7,11 +7,10 @@
   top: 15%;
   text-align: center;
   border-radius: 1rem;
-  color: var(--clr-Bulgarian-Rose);
   font-style: italic;
   height: auto;
   width: 420px;
-  box-shadow: 0px 0px 8px 7px var(--clr-Bulgarian-Rose);
+  /* box-shadow: 0px 0px 8px 7px var(--clr-Bulgarian-Rose); */
 }
 
 .error-desc {
@@ -20,6 +19,7 @@
   font-family: "Barlow", sans-serif;
   padding: 22px;
   height: auto;
+  color: var(--clr-danger);
 }
 
 .error-box {
@@ -32,6 +32,7 @@
   animation: cssAnimation 0s ease-in 2s forwards;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
+  /* box-shadow: none; */
 }
 
 @keyframes cssAnimation {
