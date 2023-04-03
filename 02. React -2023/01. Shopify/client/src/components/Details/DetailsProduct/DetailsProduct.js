@@ -4,13 +4,14 @@ import { useGameContext } from "../../../contexts/GameContext";
 import styles from "./DetailsProduct.module.css";
 
 export default function DetailsProduct({ game }) {
-
   const { userId, isAuthenticated } = useAuthContext();
   const { addGameToFavorites } = useGameContext();
   const navigate = useNavigate();
 
+  const isOwner = userId ? userId === game._ownerId : false;
+
   const onClickAddFavorite = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     // Checking if the user already add this game to his favorites
     if (game.users.includes(userId) === false) {
       addGameToFavorites(game._id);
@@ -38,13 +39,15 @@ export default function DetailsProduct({ game }) {
         <div className={styles["icon-wrapper"]}>
           <p className={styles["content-price"]}>{game.price}$</p>
           <div className={"icon-btn"}>
-
             {/* <!-- User only --> */}
-            {isAuthenticated && 
-            <button onClick={onClickAddFavorite} className={`${styles["heart-icon"]} btn`}>
-              <i className="fa-regular fa-heart"></i>
-            </button>
-            }
+            {isAuthenticated && (
+              <button
+                onClick={onClickAddFavorite}
+                className={`${styles["heart-icon"]} btn`}
+              >
+                <i className="fa-regular fa-heart"></i>
+              </button>
+            )}
             <button className={`${styles["shopping-icon"]} btn`}>
               <i className="fa-solid fa-cart-shopping"></i>
             </button>
@@ -53,15 +56,25 @@ export default function DetailsProduct({ game }) {
 
         {/* <!-- If there is no registered user, do not display buttons--> */}
         <div className={styles["buttons-wrapper"]}>
-          <Link to={`/edit/${game._id}`} className={`btn-edit btn`}>
-            Edit
-          </Link>
-          <Link to={`/delete/${game._id}`} className={"btn-delete btn"}>
-            Delete
-          </Link>
-          <Link className={"btn-comments btn"} to={`/create-comment/${game._id}`}>
-            Comments
-          </Link>
+          {isOwner && (
+            <>
+              <Link to={`/edit/${game._id}`} className={`btn-edit btn`}>
+                Edit
+              </Link>
+              <Link to={`/delete/${game._id}`} className={"btn-delete btn"}>
+                Delete
+              </Link>
+            </>
+          )}
+
+          {isAuthenticated && !isOwner && (
+            <Link
+              className={"btn-comments btn"}
+              to={`/create-comment/${game._id}`}
+            >
+              Comments
+            </Link>
+          )}
         </div>
       </article>
     </div>

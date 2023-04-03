@@ -49,13 +49,13 @@ gameController.get("/:id", async (req, res) => {
 });
 
 gameController.put("/:id", hasUser(), async (req, res, next) => {
-  // TODO to see if i need owner or implement admin role
-  // const item = await getById(req.params.id);
-  // if (req.user._id != item._ownerId) {
-  //     return res.status(403).json({ message: 'You cannot modify this record' });
-  // }
-
   try {
+    // implement isOwner
+    const item = await getById(req.params.id);
+    if (req.user._id != item._ownerId) {
+      return res.status(403).json({ message: "You cannot modify this record" });
+    }
+
     const result = await updateById(req.params.id, req.body);
     res.json(result);
   } catch (err) {
@@ -66,12 +66,13 @@ gameController.put("/:id", hasUser(), async (req, res, next) => {
 
 gameController.delete("/:id", hasUser(), async (req, res) => {
   // TODO to see if i need owner or implement admin role
-  // const item = await deleteById(req.params.id);
-  // if (req.user._id != item._ownerId) {
-  //     return res.status(403).json({ message: 'You cannot modify this record' });
-  // }
-
   try {
+    // implement isOwner
+    const item = await getById(req.params.id);
+    if (req.user._id != item._ownerId) {
+      return res.status(403).json({ message: "You cannot modify this record" });
+    }
+
     await deleteById(req.params.id);
     res.status(204).end();
   } catch (err) {
@@ -82,8 +83,8 @@ gameController.delete("/:id", hasUser(), async (req, res) => {
 
 gameController.post("/favorites/:gameId", hasUser(), async (req, res) => {
   try {
-     const item = await addGameToFavorites(req.params.gameId, req.user._id);
-     res.json(item);
+    const item = await addGameToFavorites(req.params.gameId, req.user._id);
+    res.json(item);
   } catch (err) {
     const message = parseError(err);
     res.status(400).json({ message });
