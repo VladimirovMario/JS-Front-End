@@ -5,6 +5,7 @@ import { getById } from "../../../../services/gameService";
 import { useGameContext } from "../../../../contexts/GameContext";
 
 import styles from "./CommentCreate.module.css";
+import { formValidations } from "../../../../utils/formValidations";
 
 export default function CommentCreate() {
   const { createComment } = useGameContext();
@@ -12,6 +13,11 @@ export default function CommentCreate() {
   const navigate = useNavigate();
   const [game, setGame] = useState({});
   const [values, setValues] = useState({
+    subject: "",
+    content: "",
+  });
+
+  const [errors, setErrors] = useState({
     subject: "",
     content: "",
   });
@@ -36,6 +42,11 @@ export default function CommentCreate() {
     navigate(`/catalog/${gameId}`);
   };
 
+  const onValidateForm = (e) => {
+    const error = formValidations(e);
+    setErrors(error);
+  };
+
   return (
     <section className="section">
       <h2 className={"section-title"}>Create Comment</h2>
@@ -51,7 +62,17 @@ export default function CommentCreate() {
         <div className={styles["form-wrapper"]}>
           <form onSubmit={onSubmit} className={styles["form"]} action="post">
             <label htmlFor="genre">
-              <span className={styles["input-title"]}>Subject</span>
+              <div className={styles["input-label"]}>
+                <span>
+                  Subject
+                  {errors && (
+                    <span className={styles["error-message"]}>
+                      &nbsp;{errors.subject}
+                    </span>
+                  )}
+                </span>
+              </div>
+
               <input
                 className={styles["input-subject"]}
                 type="text"
@@ -60,11 +81,22 @@ export default function CommentCreate() {
                 name="subject"
                 value={values.subject}
                 onChange={onChangeHandler}
+                onBlur={onValidateForm}
               />
             </label>
 
             <label htmlFor="content">
-              <span className={styles["input-title"]}>Content</span>
+              <div className={styles["input-label"]}>
+                <span>
+                  Content
+                  {errors && (
+                    <span className={styles["error-message"]}>
+                      &nbsp;{errors.content}
+                    </span>
+                  )}
+                </span>
+              </div>
+
               <textarea
                 className={styles["message"]}
                 cols="40"
@@ -73,6 +105,7 @@ export default function CommentCreate() {
                 name="content"
                 value={values.content}
                 onChange={onChangeHandler}
+                onBlur={onValidateForm}
               ></textarea>
             </label>
 

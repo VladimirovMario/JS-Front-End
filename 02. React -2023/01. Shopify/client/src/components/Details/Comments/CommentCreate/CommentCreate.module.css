@@ -36,10 +36,13 @@
   gap: 24px;
 }
 
-.input-title {
-  font-size: 23px;
-  display: block;
-  margin-bottom: 12px;
+.input-label {
+  font-size: 21px;
+  margin-bottom: 6px;
+}
+
+.error-message {
+  color: var(--clr-danger);
 }
 
 .input-subject {
