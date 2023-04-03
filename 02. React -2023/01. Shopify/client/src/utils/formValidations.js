@@ -7,17 +7,24 @@ export const formValidations = (e) => {
 
   const imageRegex = /^https?:\/\/.+$/i;
 
+  const minLength = 3;
+  const middleLength = 60;
+  const maxLength = 1400;
+  // TODO Add this at the end of message, after fixing the layout: "characters long".
+  const message = `should be between ${minLength} and ${middleLength}`;
+  const condition = value.length < minLength || value.length > middleLength;
+
   // User validations
   if (target === "email" && emailRegex.test(value) === false) {
     errors.email = "must be valid address format!";
   }
 
-  if (target === "username" && value.length < 3) {
-    errors.username = "should be at least 3 characters long";
+  if (target === "username" && condition) {
+    errors.username = message;
   }
 
-  if (target === "password" && value.length < 3) {
-    errors.password = "should be at least 3 characters long";
+  if (target === "password" && condition) {
+    errors.password = message;
   }
 
   if (target === "repass" && value === "") {
@@ -25,12 +32,12 @@ export const formValidations = (e) => {
   }
 
   // Product validations
-  if (target === "title" && value.length < 3) {
-    errors.title = "should be at least 3 characters";
+  if (target === "title" && condition) {
+    errors.title = message;
   }
 
-  if (target === "genre" && value.length < 3) {
-    errors.genre = "should be at least 3 characters";
+  if (target === "genre" && condition) {
+    errors.genre = message;
   }
 
   if (target === "price" && Number(value) < 0.01) {
@@ -41,8 +48,17 @@ export const formValidations = (e) => {
     errors.imageUrl = "should starts with http or https";
   }
 
-  if (target === "description" && (value.length < 4 || value.length > 1400)) {
-    errors.description = "should be between 4 and 1400 characters";
+  if (target === "description" && (value.length < minLength + 1 || value.length > maxLength)) {
+    errors.description = `should be between ${minLength + 1} and ${maxLength} characters long`;
+  }
+
+  // Comments validations
+  if (target === "subject" && (value.length < minLength + 1 || value.length > middleLength)) {
+    errors.subject = `should be between ${minLength + 1} and ${middleLength} characters long`;
+  }
+
+  if (target === "content" && (value.length < minLength + 1 || value.length > 600)) {
+    errors.content = `should be between ${minLength + 1} and 600 characters long`;
   }
 
   return errors;
