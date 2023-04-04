@@ -17,6 +17,7 @@ import Footer from "./components/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import { GameProvider } from "./contexts/GameContext";
+import { RouteGuard } from "./components/common/RouteGuard";
 
 import "./App.css";
 
@@ -37,11 +38,15 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/catalog/:gameId" element={<Details />} />
-            <Route path="/create-product" element={<Create />} />
-            <Route path="/edit/:gameId" element={<Edit />} />
-            <Route path="/delete/:gameId" element={<DeleteProduct />} />
-            <Route path="/create-comment/:gameId" element={<CommentCreate/>} />           
-            <Route path="/auth/profile" element={<Profile />} />
+
+            <Route element={<RouteGuard />}>
+              <Route path="/create-product" element={<Create />} />
+              <Route path="/edit/:gameId" element={<Edit />} />
+              <Route path="/delete/:gameId" element={<DeleteProduct />} />
+              <Route path="/create-comment/:gameId" element={<CommentCreate />} />
+              <Route path="/auth/profile" element={<Profile />} />
+            </Route>
+
             <Route path="/auth/register" element={<Register />} />
             <Route path="/auth/login" element={<Login />} />
             <Route path="/auth/logout" element={<Logout />} />
