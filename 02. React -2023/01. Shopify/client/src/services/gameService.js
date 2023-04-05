@@ -41,7 +41,7 @@ export const gameServiceFactory = (token) => {
   };
 
   const deleteGame = async (id) => {
-    return await authorizedRequest.delete(`${endpoints.deleteGame}/${id}`);
+    return await authorizedRequest.delete(endpoints.deleteGame + id);
   };
 
   const addGameToFavorites = async (gameId) => {

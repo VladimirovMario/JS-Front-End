@@ -77,14 +77,13 @@ export const GameProvider = ({ children }) => {
   const onDeleteSubmit = async ({ _id }) => {
     const id = _id;
     try {
-      const deletedGame = await gameService.deleteGame(id);
+      await gameService.deleteGame(id);
       const updatedState = (state) => state.filter((game) => game._id !== id);
       setGames(updatedState);
       setLatestGames(updatedState);
-      console.log(latestGames);
+      // console.log(latestGames);
       // TODO: if(latestGames.length < limit - 1) add game in that place where was the deleted one!
-      navigate(`/catalog`);
-      console.log(deletedGame);
+      navigate(`/catalog`);    
     } catch (error) {
       alert(error.message);
     }

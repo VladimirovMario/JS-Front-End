@@ -1,4 +1,5 @@
 const Game = require("../models/Game");
+const Comment = require("../models/Comment");
 
 async function getAll() {
   return Game.find({});
@@ -14,7 +15,10 @@ async function getById(id) {
 }
 
 async function deleteById(id) {
-  return Game.findByIdAndRemove(id);
+  const deletedGame = await Game.findByIdAndRemove(id);
+  const deletedComments = await Comment.deleteMany({_id: {$in: deletedGame.comments}});
+
+  return deletedGame;
 }
 
 async function updateById(id, body) {
