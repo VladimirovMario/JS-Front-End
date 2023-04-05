@@ -26,6 +26,8 @@
 .card .thumbnail-img {
   width: 100%;
   height: 100%;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
   object-fit: center center;
   background-color: transparent;
 }
@@ -62,13 +64,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0px; 
+  font-size: 0px;
 }
 
 .heart-icon,
 .shopping-icon {
   font-size: 32px;
-  color: var(--clr-abbey);  
+  color: var(--clr-abbey);
 }
 
 .heart-icon {
