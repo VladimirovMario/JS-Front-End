@@ -74,16 +74,21 @@ export const GameProvider = ({ children }) => {
     }
   };
 
+  // TODO see how to fix the problem
+  // https://blog.logrocket.com/why-react-doesnt-update-state-immediately/
   const onDeleteSubmit = async ({ _id }) => {
     const id = _id;
     try {
-      await gameService.deleteGame(id);
-      const updatedState = (state) => state.filter((game) => game._id !== id);
-      setGames(updatedState);
-      setLatestGames(updatedState);
-      // console.log(latestGames);
-      // TODO: if(latestGames.length < limit - 1) add game in that place where was the deleted one!
-      navigate(`/catalog`);    
+       await gameService.deleteGame(id);
+      // const updatedState = (state) => state.filter((game) => game._id !== id);
+      setGames((state) => state.filter((game) => game._id !== id));
+      setLatestGames((state) => state.filter((game) => game._id !== id));
+
+      // TODO: if(latestGames.length < limit) add game in that place where was the deleted one!
+      if (latestGames.length < limit) {
+        setLatestGames(games.slice(-limit).reverse());
+      }
+     navigate(`/`);
     } catch (error) {
       alert(error.message);
     }

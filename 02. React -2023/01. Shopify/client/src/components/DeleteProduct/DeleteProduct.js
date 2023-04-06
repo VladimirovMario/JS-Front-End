@@ -64,7 +64,7 @@ export default function DeleteProduct() {
                 <input
                   className={styles["input-title"]}
                   type="text"
-                  id="title"                  
+                  id="title"
                   name="title"
                   value={values.title}
                   disabled={true}
@@ -77,7 +77,7 @@ export default function DeleteProduct() {
                 <input
                   className={styles["input-genre"]}
                   type="text"
-                  id="genre"                 
+                  id="genre"
                   name="genre"
                   value={values.genre}
                   disabled={true}
@@ -103,7 +103,7 @@ export default function DeleteProduct() {
                 <input
                   className={styles["input-img-url"]}
                   type="text"
-                  id="imageUrl"                  
+                  id="imageUrl"
                   name="imageUrl"
                   value={values.imageUrl}
                   disabled={true}
@@ -120,7 +120,7 @@ export default function DeleteProduct() {
                 <textarea
                   className={styles["description"]}
                   cols="40"
-                  rows="4"                 
+                  rows="4"
                   name="description"
                   value={values.description}
                   disabled={true}
