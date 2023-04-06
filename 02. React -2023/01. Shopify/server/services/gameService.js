@@ -16,7 +16,9 @@ async function getById(id) {
 
 async function deleteById(id) {
   const deletedGame = await Game.findByIdAndRemove(id);
-  const deletedComments = await Comment.deleteMany({_id: {$in: deletedGame.comments}});
+  const deletedComments = await Comment.deleteMany({
+    _id: { $in: deletedGame.comments },
+  });
 
   return deletedGame;
 }
@@ -45,6 +47,12 @@ async function addGameToFavorites(gameId, userId) {
   return game.save();
 }
 
+async function removeGameFromFavorites(gameId, userId) {
+  const game = await Game.findById(gameId);
+  game.users.remove(userId);
+  return game.save();
+}
+
 async function getUserFavorites(userId) {
   return Game.find({ users: userId });
 }
@@ -57,5 +65,6 @@ module.exports = {
   updateById,
   getLatestsGames,
   addGameToFavorites,
+  removeGameFromFavorites,
   getUserFavorites,
 };
