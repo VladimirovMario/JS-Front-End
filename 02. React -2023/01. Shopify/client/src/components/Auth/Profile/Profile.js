@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { useAuthContext } from "../../../contexts/AuthContext";
-import { getUserFavorites } from "../../../services/gameService";
+import {
+  gameServiceFactory,
+  getUserFavorites,
+} from "../../../services/gameService";
 import styles from "./Profile.module.css";
 import { ProfileProducts } from "./ProfileProducts/ProfileProducts";
 
-// TODO fix the hole profile
+// TODO implement logic to display all user comments
 export default function Profile() {
-  const { userId, userEmail, userUsername } = useAuthContext();
+  const { userId, userEmail, userUsername, token } = useAuthContext();
   const [favoriteGames, setFavoriteGames] = useState([]);
+  const gameService = gameServiceFactory(token);
 
   useEffect(() => {
     getUserFavorites(userId)
@@ -18,6 +22,17 @@ export default function Profile() {
         alert(error);
       });
   }, [userId, favoriteGames.length]);
+
+  const onFavoriteRemoveHandler = async (gameId) => {
+    // TODO the result is the whole game,
+    // so we can add game title to inform the user what he removed
+    try {
+      await gameService.removeGameFromFavorites(gameId);
+      setFavoriteGames((state) => state.filter((game) => game._id !== gameId));
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   return (
     <section className="section">
@@ -55,7 +70,11 @@ export default function Profile() {
       <div className={styles["product-wrapper"]}>
         <ul className={styles["product-ul"]}>
           {favoriteGames.map((game) => (
-            <ProfileProducts key={game._id} {...game} />
+            <ProfileProducts
+              key={game._id}
+              {...game}
+              onFavoriteRemoveHandler={onFavoriteRemoveHandler}
+            />
           ))}
         </ul>
       </div>
