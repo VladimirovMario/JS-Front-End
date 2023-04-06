@@ -8,6 +8,7 @@ const {
   deleteById,
   updateById,
   addGameToFavorites,
+  removeGameFromFavorites,
   getUserFavorites,
 } = require("../services/gameService");
 
@@ -84,6 +85,16 @@ gameController.delete("/:id", hasUser(), async (req, res) => {
 gameController.post("/favorites/:gameId", hasUser(), async (req, res) => {
   try {
     const item = await addGameToFavorites(req.params.gameId, req.user._id);
+    res.json(item);
+  } catch (err) {
+    const message = parseError(err);
+    res.status(400).json({ message });
+  }
+});
+
+gameController.put("/favorites/:gameId", hasUser(), async (req, res) => {
+  try {
+    const item = await removeGameFromFavorites(req.params.gameId, req.user._id);    
     res.json(item);
   } catch (err) {
     const message = parseError(err);
