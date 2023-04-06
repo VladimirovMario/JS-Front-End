@@ -19,7 +19,7 @@ export const requester = async (method, token, url, data) => {
       ...options.headers,
       "X-Authorization": token,
     };
-    console.log("From requester.js", token);
+    // console.log("From requester.js", token);
   }
 
   try {
