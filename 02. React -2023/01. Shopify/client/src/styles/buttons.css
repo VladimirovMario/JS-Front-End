@@ -30,7 +30,7 @@
 }
 
 .btn-edit {
-  background-color: green;
+  background-color: var(--clr-highland);
 }
 
 .btn-delete {
@@ -42,12 +42,16 @@
 }
 
 .create-btn {
-  background-color: green;
+  background-color: var(--clr-highland);
 }
 
 .edit-btn,
 .form-btn {
-  background-color:  var(--clr-abbey);
+  background-color: var(--clr-abbey);
+}
+
+.delete-btn {
+  background-color: var(--clr-danger);
 }
 
 .btn-edit:hover,
@@ -60,13 +64,19 @@
 
 .create-btn:hover {
   background-color: transparent;
-  border: 2px solid green;
-  color: green;
+  border: 2px solid var(--clr-highland);
+  color: var(--clr-highland);
 }
 
 .edit-btn:hover,
 .form-btn:hover {
   background-color: transparent;
-  border: 2px solid  var(--clr-abbey);
-  color:  var(--clr-abbey);
+  border: 2px solid var(--clr-abbey);
+  color: var(--clr-abbey);
+}
+
+.delete-btn:hover {
+  background-color: transparent;
+  border: 2px solid var(--clr-danger);
+  color: var(--clr-danger);
 }
