@@ -40,7 +40,7 @@ export default function DeleteProduct() {
           <img
             className={styles["create-edit-img"]}
             src={values.imageUrl}
-            alt="delete-product.jpg"
+            alt={`${values.title}.jpg`}
           />
         </div>
 
@@ -64,8 +64,7 @@ export default function DeleteProduct() {
                 <input
                   className={styles["input-title"]}
                   type="text"
-                  id="title"
-                  placeholder="Grand Theft Auto V"
+                  id="title"                  
                   name="title"
                   value={values.title}
                   disabled={true}
@@ -78,8 +77,7 @@ export default function DeleteProduct() {
                 <input
                   className={styles["input-genre"]}
                   type="text"
-                  id="genre"
-                  placeholder="Action"
+                  id="genre"                 
                   name="genre"
                   value={values.genre}
                   disabled={true}
@@ -105,8 +103,7 @@ export default function DeleteProduct() {
                 <input
                   className={styles["input-img-url"]}
                   type="text"
-                  id="imageUrl"
-                  placeholder="https://"
+                  id="imageUrl"                  
                   name="imageUrl"
                   value={values.imageUrl}
                   disabled={true}
@@ -123,8 +120,7 @@ export default function DeleteProduct() {
                 <textarea
                   className={styles["description"]}
                   cols="40"
-                  rows="4"
-                  placeholder="Grand Theft Auto (usually abbreviated GTA) is a series of games that incorporate driving and action gameplay styles."
+                  rows="4"                 
                   name="description"
                   value={values.description}
                   disabled={true}
@@ -132,7 +128,7 @@ export default function DeleteProduct() {
               </label>
               <div className={styles["align-center-action"]}>
                 <input
-                  className={"action-bnt edit-btn btn"}
+                  className={"action-bnt delete-btn btn"}
                   type="submit"
                   value="Delete"
                 />
