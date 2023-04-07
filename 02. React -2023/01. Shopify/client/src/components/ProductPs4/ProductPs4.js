@@ -47,13 +47,13 @@ export default function ProductPs4({
           </div>
           <div className={styles["content"]}>
             <h2 className={styles["content-title"]}>
-              {textSubstring(title, 28)}
+              {textSubstring(title, "title")}
             </h2>
             <p className={styles["content-genre"]}>
-              Genre: {textSubstring(genre, 20)}
+              Genre: {textSubstring(genre, "genre")}
             </p>
             <p className={styles["content-desc"]}>
-              {textSubstring(description, 25)}
+              {textSubstring(description, "description")}
             </p>
 
             <div className={styles["icon-wrapper"]}>
