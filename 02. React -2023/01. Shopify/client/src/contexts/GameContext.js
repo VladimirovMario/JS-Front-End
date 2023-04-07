@@ -14,6 +14,7 @@ export const GameContext = createContext(null);
 export const GameProvider = ({ children }) => {
   const [games, setGames] = useState([]);
   const [latestGames, setLatestGames] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { token } = useAuthContext();
 
@@ -26,6 +27,7 @@ export const GameProvider = ({ children }) => {
       .then(([gamesData, latestGamesData]) => {
         setGames(gamesData);
         setLatestGames(latestGamesData);
+        setLoading(false);
       })
       .catch((error) => {
         alert(error.message);
@@ -120,6 +122,7 @@ export const GameProvider = ({ children }) => {
   const contextValues = {
     games,
     latestGames,
+    loading,
     onCreateSubmit,
     onEditSubmit,
     onDeleteSubmit,

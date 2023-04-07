@@ -1,13 +1,15 @@
 import { useGameContext } from "../../../contexts/GameContext";
+import { Loader } from "../../Shared/Loader/Loader";
 import Hero from "../Hero/Hero";
 import ProductList from "../ProductList/ProductList";
 
 export default function HomePage() {
-  const { latestGames } = useGameContext();
+  const { latestGames, loading } = useGameContext();
   return (
     <>
       <Hero />
-      <ProductList games={latestGames} />
+      {loading && <Loader/>}
+      {!loading && <ProductList games={latestGames} />}
     </>
   );
 }
