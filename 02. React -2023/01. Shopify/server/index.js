@@ -16,7 +16,7 @@ const gameController = require("./controllers/gameController");
 const homeController = require("./controllers/homeController");
 const commentController = require("./controllers/commentController");
 
-const connectionString = "mongodb://0.0.0.0:27017/exam-prep-3";
+const connectionString = "mongodb://0.0.0.0:27017/shopify";
 start();
 
 async function start() {
