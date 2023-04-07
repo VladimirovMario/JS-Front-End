@@ -10,7 +10,7 @@ export default function Header() {
       <ul>
         <li>
           <Link to={"/"}>
-            <img className={styles.logo} src="static/shopping-logo.png" alt="logo"/>
+            <img className={styles.logo} src="/static/shopping-logo.png" alt="logo"/>
           </Link>
         </li>
       </ul>
