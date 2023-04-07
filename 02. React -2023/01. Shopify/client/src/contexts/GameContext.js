@@ -32,6 +32,13 @@ export const GameProvider = ({ children }) => {
       });
   }, []);
 
+  // Second useEffect is used for checking latestGames.length updates
+  useEffect(() => {
+    if (latestGames.length < limit) {
+      setLatestGames(games.slice(-limit).reverse());
+    }
+  }, [latestGames.length, games]);
+
   // TODO extract the handlers
   const onCreateSubmit = async (data) => {
     let { title, genre, price, imageUrl, description } = data;
@@ -74,21 +81,14 @@ export const GameProvider = ({ children }) => {
     }
   };
 
-  // TODO see how to fix the problem
-  // https://blog.logrocket.com/why-react-doesnt-update-state-immediately/
   const onDeleteSubmit = async ({ _id }) => {
     const id = _id;
     try {
-       await gameService.deleteGame(id);
-      // const updatedState = (state) => state.filter((game) => game._id !== id);
-      setGames((state) => state.filter((game) => game._id !== id));
-      setLatestGames((state) => state.filter((game) => game._id !== id));
-
-      // TODO: if(latestGames.length < limit) add game in that place where was the deleted one!
-      if (latestGames.length < limit) {
-        setLatestGames(games.slice(-limit).reverse());
-      }
-     navigate(`/`);
+      await gameService.deleteGame(id);
+      const updatedState = (state) => state.filter((game) => game._id !== id);
+      setGames(updatedState);
+      setLatestGames(updatedState);
+      navigate(`/`);
     } catch (error) {
       alert(error.message);
     }
