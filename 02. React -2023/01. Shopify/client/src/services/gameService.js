@@ -1,7 +1,7 @@
 import { requestFactory } from "./requester";
 
 const endpoints = {
-  allGames: "/api/game",
+  allGames: "/api/game/",
   createGame: "/api/game",
   editGame: "/api/game/",
   deleteGame: "/api/game/",
@@ -15,8 +15,13 @@ const endpoints = {
 
 const request = requestFactory();
 
-export const getAllGames = async () => {
+export const getAllGames = async () => {  
   return await request.get(endpoints.allGames);
+};
+
+export const searchGames = async (searchValue) => {  
+  const query = `?search=${searchValue}`
+  return await request.get(endpoints.allGames + query);
 };
 
 export const getById = async (gameId) => {
