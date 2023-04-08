@@ -1,8 +1,12 @@
 const Game = require("../models/Game");
 const Comment = require("../models/Comment");
 
-async function getAll() {
-  return Game.find({});
+async function getAll(search) {
+  const query = {};
+  if (search) {
+    query.title = new RegExp(search, "i");
+  }
+  return Game.find(query);
 }
 
 async function createGame(game) {
