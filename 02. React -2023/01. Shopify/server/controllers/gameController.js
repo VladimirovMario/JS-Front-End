@@ -16,9 +16,8 @@ const { parseError } = require("../util/parser");
 
 gameController.get("/", async (req, res) => {
   let items = [];
-  if (req.query.where) {
-    const userId = JSON.parse(req.query.where.split("=")[1]);
-    items = await getByUserId(userId);
+  if (req.query.search !== undefined) {
+    items = await getAll(req.query.search);
   } else {
     items = await getAll();
   }
@@ -94,7 +93,7 @@ gameController.post("/favorites/:gameId", hasUser(), async (req, res) => {
 
 gameController.put("/favorites/:gameId", hasUser(), async (req, res) => {
   try {
-    const item = await removeGameFromFavorites(req.params.gameId, req.user._id);    
+    const item = await removeGameFromFavorites(req.params.gameId, req.user._id);
     res.json(item);
   } catch (err) {
     const message = parseError(err);
