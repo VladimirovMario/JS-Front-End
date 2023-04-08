@@ -48,9 +48,10 @@ async function addGameToFavorites(gameId, userId) {
 }
 
 async function removeGameFromFavorites(gameId, userId) {
-  const game = await Game.findById(gameId);
-  game.users.remove(userId);
-  return game.save();
+  return await Game.findByIdAndUpdate(
+    { _id: gameId },
+    { $pull: { users: userId } }
+  );
 }
 
 async function getUserFavorites(userId) {
