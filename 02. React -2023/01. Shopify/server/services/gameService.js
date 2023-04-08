@@ -15,6 +15,8 @@ async function createGame(game) {
 
 async function getById(id) {
   // TODO fix the problem with invalid ID's
+  // The server dies
+  // http://localhost:3000/catalog/test
   return Game.findById(id);
 }
 
