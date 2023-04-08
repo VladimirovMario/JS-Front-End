@@ -4,6 +4,7 @@ import {
   gameServiceFactory,
   getAllGames,
   getLatestsGames,
+  searchGames,
 } from "../services/gameService";
 import { commentServiceFactory } from "../services/commentService";
 
@@ -105,6 +106,19 @@ export const GameProvider = ({ children }) => {
     }
   };
 
+  // TODO see examples for search in React
+  // Make own useState and then check if it's necessary to render search or games state.
+  // If there are search results, just show them and keep games state untouched.
+  const searchGamesHandler = async (title) => {
+    // TODO compare the old state and if there are no changes, don't set new one.
+    try {
+     const search = await searchGames(title);
+     setGames(search)
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   // Comments functionality
   const createComment = async (gameId, commentsData) => {
     const { subject, content } = commentsData;
@@ -123,6 +137,7 @@ export const GameProvider = ({ children }) => {
     games,
     latestGames,
     loading,
+    searchGamesHandler,
     onCreateSubmit,
     onEditSubmit,
     onDeleteSubmit,
