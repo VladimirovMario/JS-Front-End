@@ -1,0 +1,90 @@
+@media screen and (max-width: 600px) {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  main {
+    width: auto;
+  }
+
+  section {
+    max-width: 100%;
+  }
+
+  .left-to-right:first-child {
+    padding: 60px;
+    height: 660px;
+  }
+
+  main .left-to-right article {
+    padding: 53px;
+    border-radius: 18%;
+    width: auto;
+    height: auto;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  section.left-to-right:nth-child(1) > article:nth-child(1) > p:nth-child(2) {
+    margin-bottom: 0px;
+  }
+
+  article > button {
+    display: none;
+  }
+
+  main > section:nth-child(2) {
+    flex-direction: column;
+    padding: 130px 0px;
+    margin: -130px 0px;
+  }
+
+  main section:nth-child(2) article,
+  main section:nth-child(4) article {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  section:nth-child(2) > article:nth-child(2) > img {
+    width: 100%;
+  }
+
+  section.left-to-right:nth-child(3) > article:nth-child(1) {
+    padding: 40px 48px;
+  }
+
+  section.left-to-right:nth-child(3)
+    > article:nth-child(1)
+    > header:nth-child(1)
+    > h1:nth-child(1) {
+    margin-bottom: 0px;
+  }
+
+  body > main:nth-child(1) > section:nth-child(4) {
+    flex-direction: column;
+    padding: 130px 0px 0px 0px;
+    margin: -130px 0px;
+  }
+
+  form {
+    width: auto;
+  }
+
+  section form label input,
+  section form textarea {
+    width: 100%;
+  }
+
+  #send {
+    margin: 20px auto 0px auto;
+    display: block;
+  }
+}
