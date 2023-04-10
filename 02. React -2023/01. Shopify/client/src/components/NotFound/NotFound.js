@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./NotFound.module.css";
 
 export default function NotFound() {
@@ -10,10 +11,10 @@ export default function NotFound() {
         <h2 className={styles["not-found-title"]}>404</h2>
         <p className={styles["not-found-desc"]}>
           The Page you are looking for doesn't exist or another error occurred.
-          Go to{" "}
-          <a className={styles["not-found-link"]} href="/">
+          Go to
+          <Link className={styles["not-found-link"]} to="/">
             Shopify
-          </a>
+          </Link>
           .
         </p>
       </div>
