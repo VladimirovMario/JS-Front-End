@@ -1,0 +1,1 @@
+![solution-screenshot-Mountain-Landing](https://user-images.githubusercontent.com/103949296/231225094-360bf609-2b3d-4799-b571-a6822728bd50.png)
