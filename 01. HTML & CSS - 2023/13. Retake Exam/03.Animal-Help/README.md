@@ -1,0 +1,1 @@
+![solution_screenshot_AnimalHelp](https://user-images.githubusercontent.com/103949296/232852066-fe7bad67-fd26-44dc-a4b4-014cf180a123.png)
