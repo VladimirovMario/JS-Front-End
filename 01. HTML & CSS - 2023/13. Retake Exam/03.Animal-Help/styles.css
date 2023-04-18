@@ -1,0 +1,245 @@
+body {
+  margin: 0 auto;
+  max-width: 1200px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.section {
+  text-align: center;
+  padding: 32px 64px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 24px 62px;
+}
+
+.logo-text {
+  font-weight: bold;
+}
+
+.nav-ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.item-link {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.hero {
+  /* height: 45vh; */
+  background-color: #85dcff;
+  padding: 0px 64px;
+  display: flex;
+  align-items: center;
+}
+
+.content-wrapper {
+  padding: 0px 64px;
+}
+
+.hero-title,
+.hero-desc {
+  text-align: left;
+  margin-bottom: 32px;
+}
+
+.btn {
+  all: unset;
+  padding: 12px 56px;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.cta-primary {
+  background-color: white;
+  margin-right: 16px;
+}
+
+.cta-secondary {
+  color: white;
+  background-color: black;
+}
+
+/* Animals Need */
+
+.animals-title,
+.animals-desc {
+  margin-bottom: 32px;
+}
+
+.desc-wrapper {
+  margin: 0 auto;
+  width: 50%;
+  display: block;
+}
+
+.animals-desc {
+  font-weight: 600;
+  letter-spacing: 1.2px;
+}
+
+.info-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.fa-solid.fa-house,
+.fa-solid.fa-helicopter,
+.fa-solid.fa-pencil {
+  color: #85dcff;
+  font-size: 120px;
+}
+
+.items {
+  place-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* WE WORK */
+.we-work {
+  padding: 56px;
+  background: #85dcff;
+}
+
+.we-work-title,
+.we-work-wrapper {
+  margin-bottom: 56px;
+}
+
+.we-work-wrapper {
+  margin: 0 auto;
+  margin-bottom: 56px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  width: 80%;
+}
+
+.wrapper-left,
+.wrapper-right {
+  text-align: left;
+  width: 70%;
+}
+
+.task-wrapper {
+  display: flex;
+  justify-content: baseline;
+  margin-bottom: 24px;
+  gap: 6px;
+}
+
+.animals .animals-title {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.animals .animals-desc {
+  margin-bottom: 24px;
+}
+
+.picture-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-bottom: 42px;
+}
+
+.work-title {
+  margin-bottom: 24px;
+}
+
+.text-wrapper {
+  border-radius: 6px;
+  margin: 0 auto;
+  margin-bottom: 24px;
+  border: 1px solid gray;
+  max-width: 80%;
+}
+
+.text-title {
+  background-color: #85dcff;
+  border: 1px solid #85dcff;
+}
+
+.text-title,
+.text-desc {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.submit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.submit-img {
+  max-width: 50%;
+}
+
+.submit-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.submit-desc {
+  margin-bottom: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.email {
+  width: 50%;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: transparent;
+  border: 1px solid gray;
+}
+
+.submit-btn {
+  align-self: baseline;
+}
+
+/* Footer */
+.footer {
+  padding: 32px 0px 32px 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-icon-wrapper {
+  font-size: 22px;
+}
+
+.footer-icon-wrapper i:not(:last-child) {
+  margin-right: 12px;
+}
+
+.copyright {
+  font-weight: 600;
+}
